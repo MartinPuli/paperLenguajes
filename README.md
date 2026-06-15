@@ -15,18 +15,22 @@ sistemas automatizados.
 | `Paper_Rol_del_ingeniero_informatico_en_10_anios.docx` | Versión lista para entregar (portada, cuerpo justificado, bibliografía APA con sangría francesa). |
 | `fuentes_adicionales.md` | Dossier de investigación: ~50 fuentes verificadas (papers, informes, artículos) con cita APA + DOI/URL + hallazgo clave, organizadas por eje temático. Base ampliada para profundizar cualquier sección. |
 | `investigacion/` | **Toda** la información recopilada, por tema (8 archivos + índice): teoría de la computación, transformers↔lenguajes formales, IA en ingeniería de software, calidad/seguridad, visiones de expertos, economía/empleo, historia/precedentes, epistemología/surveys. Incluye citas exactas, cifras, fuentes y advertencias de fiabilidad. |
-| `build_docx.py` | Genera el `.docx` a partir de `paper.md`. |
+| `figuras/` | 6 figuras profesionales (PNG 300 dpi) generadas con datos verificados: SWE-bench, productividad lab vs. real, jerarquía de Chomsky/transformers, divergencia del empleo, empleo a 2030 (WEF) y seguridad del código. |
+| `build_figures.py` | Genera las figuras (`pip install matplotlib`). |
+| `build_docx.py` | Genera el `.docx` a partir de `paper.md` (embebe las figuras y agrega numeración de página). |
 
-## Regenerar el .docx
+## Regenerar todo
 
 ```bash
-pip install python-docx
-python3 build_docx.py
+pip install python-docx matplotlib
+python3 build_figures.py   # crea figuras/
+python3 build_docx.py      # crea el .docx con figuras embebidas
 ```
 
 ## Notas para completar antes de entregar
 
 - Portada: cargar **Profesor/a** e **Integrantes** (quedaron como campos a completar).
-- Extensión: cuerpo (Introducción → Conclusión) ≈ 2.985 palabras, dentro del
-  límite de 1.500–3.000. El resumen y la bibliografía van aparte.
-- Todas las citas están en formato APA 7 y verificadas con fuentes primarias.
+- Extensión: cuerpo en prosa (Introducción → Conclusión) ≈ 2.992 palabras, dentro
+  del límite de 1.500–3.000. El resumen, los pies de figura y la bibliografía van aparte.
+- 6 figuras embebidas + numeración de página. Todas las citas en APA 7, verificadas
+  con fuentes primarias.

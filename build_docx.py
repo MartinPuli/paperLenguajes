@@ -5,11 +5,14 @@ import re
 from docx import Document
 from docx.shared import Pt, RGBColor, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
+from docx.oxml.ns import qn
+from docx.oxml import OxmlElement
 
 SRC = "paper.md"
 OUT = "Paper_Rol_del_ingeniero_informatico_en_10_anios.docx"
 
 INLINE = re.compile(r'(\*\*.+?\*\*|\*[^*]+?\*)')
+IMG = re.compile(r'^!\[(.*)\]\(([^()]+)\)\s*$')
 
 def add_runs(paragraph, text):
     pos = 0
@@ -78,6 +81,19 @@ for raw in body:
         r.font.name = "Times New Roman"; r.font.size = Pt(12)
         r.font.color.rgb = RGBColor(0, 0, 0); r.bold = True
         continue
+    mimg = IMG.match(line)
+    if mimg:
+        caption, path = mimg.group(1), mimg.group(2)
+        doc.add_picture(path, width=Inches(5.9))
+        doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
+        doc.paragraphs[-1].paragraph_format.space_before = Pt(8)
+        cap = doc.add_paragraph()
+        cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        cap.paragraph_format.space_after = Pt(12)
+        add_runs(cap, caption)
+        for r in cap.runs:
+            r.italic = True; r.font.size = Pt(9.5); r.font.color.rgb = RGBColor(0x40, 0x40, 0x40)
+        continue
     p = doc.add_paragraph()
     pf = p.paragraph_format
     pf.line_spacing_rule = WD_LINE_SPACING.ONE_POINT_FIVE
@@ -90,6 +106,20 @@ for raw in body:
         pf.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         pf.first_line_indent = Inches(0.4)
     add_runs(p, line.strip())
+
+# --- footer con número de página (excepto en la portada) -------------------
+section = doc.sections[0]
+section.different_first_page_header_footer = True
+fp = section.first_page_footer
+fp.paragraphs[0].text = ""
+footer = section.footer
+fpar = footer.paragraphs[0]
+fpar.alignment = WD_ALIGN_PARAGRAPH.CENTER
+run = fpar.add_run()
+b = OxmlElement("w:fldChar"); b.set(qn("w:fldCharType"), "begin")
+instr = OxmlElement("w:instrText"); instr.set(qn("xml:space"), "preserve"); instr.text = " PAGE "
+e = OxmlElement("w:fldChar"); e.set(qn("w:fldCharType"), "end")
+run._r.append(b); run._r.append(instr); run._r.append(e)
 
 doc.save(OUT)
 print("Escrito:", OUT)
