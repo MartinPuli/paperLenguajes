@@ -14,6 +14,7 @@ sistemas automatizados.
 | `paper.md` | Fuente del paper (Markdown, editable). ~2.997 palabras de cuerpo; 34 referencias APA 7. |
 | `Paper_Rol_del_ingeniero_informatico_en_10_anios.docx` | Versión lista para entregar (portada, cuerpo justificado, bibliografía APA con sangría francesa). |
 | `fuentes_adicionales.md` | Dossier de investigación: ~50 fuentes verificadas (papers, informes, artículos) con cita APA + DOI/URL + hallazgo clave, organizadas por eje temático. Base ampliada para profundizar cualquier sección. |
+| `investigacion/` | **Toda** la información recopilada, por tema (8 archivos + índice): teoría de la computación, transformers↔lenguajes formales, IA en ingeniería de software, calidad/seguridad, visiones de expertos, economía/empleo, historia/precedentes, epistemología/surveys. Incluye citas exactas, cifras, fuentes y advertencias de fiabilidad. |
 | `build_docx.py` | Genera el `.docx` a partir de `paper.md`. |
 
 ## Regenerar el .docx
