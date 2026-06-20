@@ -32,8 +32,8 @@ python3 build_pdf.py       # crea el .pdf final
 
 ## Notas
 
-- Portada: **Integrantes** (Martín Ezequiel Pulitano y Nicolás Silva), carrera y materia
-  ya cargados; el campo **Profesor/a** quedó como línea para completar a mano.
+- Portada completa: **Profesor** (Mario Moreno), **Integrantes** (Martín Ezequiel
+  Pulitano y Nicolás Silva), carrera (Ing. Informática, 3.er año) y materia.
 - Extensión: cuerpo en prosa (Introducción → Conclusión) ≈ 2.998 palabras, dentro
   del máximo de 3.000. El resumen, los pies de figura y la bibliografía van aparte.
 - 6 figuras embebidas + numeración de página. Todas las citas en APA 7, verificadas

@@ -69,7 +69,7 @@ story += [Spacer(1, 3.2*cm),
           Paragraph("Trabajo Práctico Final", cs(12)), Spacer(1, 1.8*cm),
           Paragraph("Carrera: Ingeniería Informática (3.er año)", cs(12)), Spacer(1, 0.25*cm),
           Paragraph("Materia: Lenguajes Formales y Teoría de la Computación", cs(12)), Spacer(1, 0.25*cm),
-          Paragraph("Profesor/a: ______________________________", cs(12)), Spacer(1, 0.25*cm),
+          Paragraph("Profesor: Mario Moreno", cs(12)), Spacer(1, 0.25*cm),
           Paragraph("Integrantes: Martín Ezequiel Pulitano y Nicolás Silva", cs(12)), Spacer(1, 1.6*cm),
           Paragraph("Junio de 2026", cs(12)),
           NextPageTemplate("body"), PageBreak()]
