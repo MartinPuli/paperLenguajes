@@ -24,9 +24,9 @@ Los peldaños siguientes confirman el patrón: los IDE comprimieron el ciclo de 
 
 ## III. El presente: la IA agéntica en el desarrollo de software (2021-2026)
 
-El ritmo del cambio es difícil de exagerar. En SWE-bench Verified, que mide la capacidad de la IA para resolver *issues* reales de software, el estado del arte pasó de ~14 % a comienzos de 2024 a más del 77 % a fines de 2025 (Anthropic, 2025): de uno de cada siete casos a más de tres de cada cuatro en menos de dos años. La adopción acompaña: GitHub Copilot superó los veinte millones de usuarios en 2025, Sundar Pichai afirmó en 2024 que la IA genera "más de una cuarta parte del código nuevo en Google" y Satya Nadella la estimó entre el 20 % y el 30 % en Microsoft (Zeff, 2025). La encuesta de Stack Overflow (2025) confirma la masividad: el 84 % usa o planea usar IA, frente al 76 % anterior.
+El ritmo del cambio es difícil de exagerar. En SWE-bench Verified, que mide la capacidad de la IA para resolver *issues* reales de software, el estado del arte pasó de ~14 % a comienzos de 2024 a cerca del 95 % a mediados de 2026 (Anthropic, 2026): de uno de cada siete casos a más de nueve de cada diez en poco más de dos años. La adopción acompaña: GitHub Copilot superó los veinte millones de usuarios en 2025, Sundar Pichai afirmó en 2024 que la IA genera "más de una cuarta parte del código nuevo en Google" y Satya Nadella la estimó entre el 20 % y el 30 % en Microsoft (Zeff, 2025). La encuesta de Stack Overflow (2025) confirma la masividad: el 84 % usa o planea usar IA, frente al 76 % anterior.
 
-![Figura 1. La capacidad de la IA para resolver *issues* reales de software pasó de ~14 % (inicios de 2024) a ~77 % (2025) en SWE-bench. Fuente: elaboración propia a partir de Anthropic (2025) y datos públicos de SWE-bench.](figuras/fig1_swebench.png)
+![Figura 1. La capacidad de la IA para resolver *issues* reales de software pasó de ~14 % (inicios de 2024) a ~95 % (mediados de 2026) en SWE-bench Verified. Fuente: elaboración propia a partir de Anthropic (2026) y datos públicos de SWE-bench.](figuras/fig1_swebench.png)
 
 Conviene, no obstante, leer estos números con cautela: un benchmark no es el mundo real. El propio equipo de SWE-bench Verified advirtió que el conjunto se saturó y "ya no mide las capacidades de codificación de frontera", y la distancia con la práctica quedó expuesta cuando un grupo independiente probó al agente Devin —presentado en 2024 como "el primer ingeniero de software de IA"— en tareas reales: completó con éxito solo 3 de 20 (Husain et al., 2025). Resolver un *issue* aislado en un repositorio conocido es muy distinto de operar dentro de un sistema de producción, con su contexto y sus consecuencias.
 
@@ -96,7 +96,7 @@ Acemoglu, D., & Restrepo, P. (2019). Automation and new tasks: How technology di
 
 Altman, S. (2025, 10 de junio). *The gentle singularity*. https://blog.samaltman.com/the-gentle-singularity
 
-Anthropic. (2025, 22 de mayo). *Introducing Claude 4*. https://www.anthropic.com/news/claude-4
+Anthropic. (2026, 9 de junio). *Claude Fable 5*. https://www.anthropic.com/news/claude-fable-5
 
 Autor, D. H. (2015). Why are there still so many jobs? The history and future of workplace automation. *Journal of Economic Perspectives, 29*(3), 3-30. https://doi.org/10.1257/jep.29.3.3
 
