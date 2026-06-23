@@ -17,6 +17,12 @@
   .chip{display:flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--bg2)}
   .timer{font-variant-numeric:tabular-nums;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg2);cursor:pointer}
   .timer.warn{color:#ffd54a;border-color:#6a5a1e} .timer.over{color:#ff6b5e;border-color:#7a2a24}
+  .bdots{display:flex;gap:7px;align-items:center}
+  .bdots .bd{font-size:12px;font-weight:800;color:#5b6675;width:25px;height:25px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--line);background:var(--bg2);transition:.2s}
+  .bdots .bd.on{color:#0d1117;background:var(--ink);border-color:var(--ink);box-shadow:0 0 0 3px rgba(255,255,255,.08)}
+  .bdots .bd.done{color:#8b98a8}
+  .blockdiv .num{font-size:118px;font-weight:800;color:var(--line);line-height:.9;margin-bottom:6px}
+  .blockdiv.climax .num{color:rgba(34,195,154,.25)}
   .dot{width:9px;height:9px;border-radius:50%}.dot.r{background:var(--red)}.dot.g{background:var(--green)}.dot.c{background:var(--violet)}
   /* barra-ataúd */
   #bar{position:relative;height:22px;background:var(--bg2);border-bottom:1px solid var(--line)}
@@ -77,11 +83,13 @@
 <body>
 <header>
   <div class="ttl"><b>DEBATE EN VIVO</b> · ¿El ingeniero informático va a dejar de existir o va a cambiar de rol?</div>
+  <div class="bdots" id="bdots" title="Bloque actual (4 bloques de ~5 min)"></div>
   <div class="contenders">
     <span class="chip"><span class="dot r"></span> Martín · <b style="color:#ffd9d2">EXTINCIÓN</b></span>
     <span class="chip"><span class="dot g"></span> Nico · <b style="color:#c9f6e8">CAMBIO</b></span>
   </div>
-  <div class="timer" id="timer" title="Click para iniciar / pausar el cronómetro">20:00</div>
+  <div class="timer" id="btimer" title="Tiempo en el bloque actual (objetivo 5:00)" style="font-size:13px;opacity:.92;min-width:92px;text-align:center">—</div>
+  <div class="timer" id="timer" title="Click para iniciar / pausar · cronómetro total">20:00</div>
 </header>
 <div id="bar"><div id="fill"></div><div id="coffin">⚰️</div></div>
 
@@ -102,6 +110,7 @@ const M="Martín · EXTINCIÓN", N="Nico · CAMBIO", C="Claude · la IA (cameo)"
 const B=[
  {kind:'cover'},
 
+ {kind:'block', blk:1, tot:4, t:'Apertura — ¿es imparable?', sub:'Cold open · Choque 1 · Choque 2', min:'≈ 5:00', acc:'al terminar ≈ 5:00'},
  {kind:'title', sec:'Cold open', num:'0', kicker:'El funeral', min:'≈ 1:30'},
  {kind:'r', sec:'Cold open', dir:'entra de negro, tono de velorio', t:"Señoras, señores… nos reunimos para despedir al <b>ingeniero informático</b>. Murió como vivió: <b>copiando y pegando</b>. Lo mató un autocomplete. Lo sobreviven su suscripción a ChatGPT, <b>47 pestañas</b> de Stack Overflow abiertas y un Jira con 200 tickets sin cerrar. En vez de flores, la familia pide <b>pull requests</b>. Que en paz descanse… en el branch <b>main</b>. <i>(baja la tapa del cajón)</i>"},
  {kind:'g', sec:'Cold open', dir:'lo frena', t:"Pará, pará. Bajá el cajón. El muerto está <b>acá sentado</b> y goza de buena salud."},
@@ -131,6 +140,7 @@ const B=[
  {kind:'g', sec:'Choque 2', dir:'desactiva los despidos', t:"¿Y los 140 mil? Leé la letra chica: <b>buena parte</b> puede ser <b>tasas de interés</b> y resaca de la <b>sobrecontratación</b> de la pandemia —la causa es discutible—, <b>no necesariamente</b> un robot que ocupó la silla. Echar por <b>plata</b> no es lo mismo que echar porque <b>sobrás</b>."},
  {kind:'meme', sec:'Choque 2', top:'Cité a tu propio testigo', emoji:'🫵😎', bottom:'Gracias, rey'},
 
+ {kind:'block', blk:2, tot:4, t:'¿Pero sirve? — productividad, calidad y el setup', sub:'Choque 3 · Choque 4 · Choque 5', min:'≈ 5:00', acc:'al terminar ≈ 10:00'},
  {kind:'title', sec:'Choque 3', num:'3', kicker:'"Te hace ir más rápido"', min:'≈ 1:45'},
  {kind:'r', sec:'Choque 3', t:"Con IA, una tarea <b>56 % más rápido</b>. Sobran la mitad. Es una calculadora."},
  {kind:'g', sec:'Choque 3', t:"Otro estudio: expertos, en proyectos reales, con IA <b>19 % más LENTOS</b>. No miente ninguno: miden cosas distintas. El tuyo, una tarea de juguete."},
@@ -160,6 +170,7 @@ const B=[
  {kind:'r', sec:'Choque 5', dir:'descolocado, después resignado', t:"…O sea que ni siquiera puedo <b>revisarlo</b> del todo bien. Un <b>millón de dólares</b> por revisar código… y yo cobrándolo en <b>monedas de Mercado Pago</b>."},
  {kind:'g', sec:'Choque 5', dir:'baja a tierra y abre el clímax', t:"Revisar <b>en serio</b> es ingeniería, no un visto bueno. Y justo ahí —donde la máquina toca su <b>techo</b>— empieza tu trabajo de verdad. Te presento el techo."},
 
+ {kind:'block', blk:3, tot:4, t:'La matemática — el clímax', sub:'Choque 6 · el papel de 1936 (intenso y lento)', min:'≈ 4:30', acc:'al terminar ≈ 14:30', climax:true},
  {kind:'title', sec:'Choque 6', num:'6', kicker:'La matemática · CLÍMAX (lento y en serio)', climax:true, badge:'🎯 el papel de 1936', min:'≈ 4:30'},
  {kind:'g', sec:'Choque 6', climax:true, t:"¿El papel de 1936? Llegó. Y no es opinión: es un <b>límite matemático probado</b>, antes de que existiera la primera computadora."},
  {kind:'g', sec:'Choque 6', climax:true, dir:'la idea-ancla', t:"Turing y el <b>teorema de Rice</b>: <b>ninguna máquina puede revisar todo programa y garantizar que está bien</b>. Imposible —como un triángulo de dos lados—. La IA escribe el código… pero no puede <b>certificarlo</b>. Y todo esto, en 1936, sin café."},
@@ -180,6 +191,7 @@ const B=[
  {kind:'c', sec:'Choque 6', dir:'se abre una notebook; voz de la IA', t:"Hola. Soy <b>Claude</b>. Vine a defender a Martín y… mmm. Ayer le inventé a un usuario una librería que no existe —con <b>total seguridad</b> de que existía—. Le puse un nombre hermoso. Así que… en realidad <b>Nico tiene razón</b>: necesito a alguien que me revise y se haga cargo. Yo a la cárcel no voy. Perdón, Martín."},
  {kind:'g', sec:'Choque 6', dir:'sonríe', t:"Gracias. <b>Tu testigo.</b>"},
 
+ {kind:'block', blk:4, tot:4, t:'El mundo real y el cierre', sub:'Choque 7 · Q&A relámpago (flexible: si vas corto, salteala) · Cierre', min:'≈ 5:30', acc:'al terminar ≈ 20:00'},
  {kind:'title', sec:'Choque 7', num:'7', kicker:'"Ya están echando gente"', min:'≈ 2:15'},
  {kind:'r', sec:'Choque 7', dir:'última carta, pega fuerte', t:"La teoría no paga el alquiler. El empleo de programadores jóvenes (22-25) cayó <b>casi 20 % desde 2024</b>. El desempleo de los recién recibidos de Computación es <b>peor que el de Historia del Arte</b>. ¿De dónde salen los arquitectos?"},
  {kind:'r', sec:'Choque 7', dir:'usa la concesión de Nico contra él', t:"Vos mismo lo admitiste: si la máquina se come el peldaño de abajo, <b>no hay escalera</b>. Estás formando <b>arquitectos sin albañiles</b>. Eso no es polarización: es una <b>generación quemada</b>."},
@@ -222,6 +234,17 @@ let i=0;
 const whoName=k=> k==='r'?M : k==='g'?N : k==='c'?C : '';
 const br=s=>(s||'').replace(/\\n/g,'<br>');
 const strip=h=>(h||'').replace(/<[^>]+>/g,'');
+/* 4 bloques de ~5 min: a qué bloque pertenece cada sección */
+const SEC2BLK={'Cold open':1,'Choque 1':1,'Choque 2':1,'Choque 3':2,'Choque 4':2,'Choque 5':2,
+  'Choque 6':3,'Choque 7':4,'Q&A relámpago':4,'Cierre':4};
+const blkOf=b=> b.kind==='block'?b.blk : (b.sec?(SEC2BLK[b.sec]||0):0);
+let blkSecs=0, curBlk=null;
+const bdotsEl=document.getElementById('bdots'), btEl=document.getElementById('btimer');
+[1,2,3,4].forEach(n=>{ const d=document.createElement('div'); d.className='bd'; d.textContent=n; bdotsEl.appendChild(d); });
+function updateBTimer(){ if(!curBlk){ btEl.textContent='—'; btEl.classList.remove('warn','over'); return; }
+  btEl.textContent='B'+curBlk+' '+fmt(blkSecs)+' / 5:00';
+  btEl.classList.toggle('warn', blkSecs>=240 && blkSecs<300);
+  btEl.classList.toggle('over', blkSecs>=300); }
 
 function render(){
   const b=B[i]; let h='', cls='card';
@@ -231,6 +254,12 @@ function render(){
        <h1>¿El ingeniero informático va a dejar de existir o va a cambiar de rol?</h1>
        <div class="vs"><div class="p r">🔴 Martín<small>Extinción</small></div><div class="v">VS</div><div class="p g">🟢 Nico<small>Cambio</small></div></div>
        <div class="go">Lenguajes Formales y Teoría de la Computación · UCEMA &nbsp;·&nbsp; <b>≈ 20 min</b> &nbsp;·&nbsp; <kbd>→</kbd> o click para empezar</div>`;
+  } else if(b.kind==='block'){
+    cls='card title blockdiv'+(b.climax?' climax':'');
+    h=`<div class="kicker" style="letter-spacing:4px;color:#8b98a8;margin-bottom:8px">BLOQUE ${b.blk} DE ${b.tot}</div>`+
+      `<div class="num">${b.blk}</div><h1>${b.t}</h1>`+
+      `<div style="color:#9aa7b4;margin-top:8px;font-size:16px">${b.sub}</div>`+
+      `<div style="margin-top:16px;font-size:15px;font-weight:700;letter-spacing:2px;color:#7c8a9a">⏱ objetivo ${b.min} · ${b.acc}</div>`;
   } else if(b.kind==='title'){
     cls='card title'+(b.climax?' climax':'');
     h=`<div class="num">${b.num}</div>`+(b.badge?`<div class="badge">${b.badge}</div>`:'')+`<div class="kicker">${b.sec}</div><h1>${b.kicker}</h1>`+(b.min?`<div style="margin-top:16px;font-size:15px;font-weight:700;letter-spacing:2px;color:#7c8a9a">⏱ objetivo ${b.min}</div>`:'');
@@ -246,15 +275,21 @@ function render(){
   }
   card.className=cls; card.innerHTML=h;
   stage.className = b.kind==='r'?'side-r':b.kind==='g'?'side-g':b.kind==='c'?'side-c':'';
-  secName.textContent=(b.kind==='title'||b.kind==='cover')?'':b.sec;
+  secName.textContent=(b.kind==='title'||b.kind==='cover'||b.kind==='block')?'':b.sec;
   count.textContent=`${i+1} / ${B.length}`;
   const pct=i/(B.length-1)*100;
   fill.style.width=pct+'%'; coffin.style.left=pct+'%';
-  coffin.textContent = i===B.length-1 ? '🧠👑' : (i/(B.length-1) >= 0.75 ? '🧠' : '⚰️');
+  coffin.textContent = i===B.length-1 ? '🧠👑' : (i/(B.length-1) >= 0.78 ? '🧠' : '⚰️');
+  // bloque actual: dots + cronómetro por bloque
+  const blk=blkOf(b);
+  if(blk && blk!==curBlk){ curBlk=blk; blkSecs=0; }
+  if(b.kind==='cover'){ curBlk=null; blkSecs=0; }
+  [...bdotsEl.children].forEach((d,idx)=>{ d.classList.toggle('on', curBlk===idx+1); d.classList.toggle('done', !!curBlk && idx+1<curBlk); });
+  updateBTimer();
   // modo presentador: próxima línea
   const nx=B[i+1];
-  if(nx){ const who = nx.kind==='r'?'🔴 Martín':nx.kind==='g'?'🟢 Nico':nx.kind==='c'?'🟣 Claude':nx.kind==='meme'?'😂 MEME':nx.kind==='aud'?'🔊 Público':nx.kind==='title'?'▸ '+(nx.kicker||''):'▸';
-    const snip = nx.kind==='meme'?strip(nx.top): nx.kind==='title'||nx.kind==='cover'?'': strip(nx.t).slice(0,60)+'…';
+  if(nx){ const who = nx.kind==='r'?'🔴 Martín':nx.kind==='g'?'🟢 Nico':nx.kind==='c'?'🟣 Claude':nx.kind==='meme'?'😂 MEME':nx.kind==='aud'?'🔊 Público':nx.kind==='block'?'▦ BLOQUE '+nx.blk:nx.kind==='title'?'▸ '+(nx.kicker||''):'▸';
+    const snip = nx.kind==='meme'?strip(nx.top): (nx.kind==='title'||nx.kind==='cover')?'': nx.kind==='block'?strip(nx.t): strip(nx.t).slice(0,60)+'…';
     nextEl.innerHTML = `sigue → <b>${who}</b> ${snip?'· '+snip:''}`; }
   else nextEl.textContent='— fin —';
 }
@@ -265,7 +300,8 @@ let secs=20*60, tHandle=null, running=false;
 const tEl=document.getElementById('timer');
 function fmt(s){const m=Math.floor(Math.abs(s)/60),x=Math.abs(s)%60;return (s<0?'-':'')+m+':'+String(x).padStart(2,'0');}
 function tick(){ secs--; tEl.textContent=fmt(secs);
-  tEl.classList.toggle('warn', secs<=120 && secs>0); tEl.classList.toggle('over', secs<=0); }
+  tEl.classList.toggle('warn', secs<=120 && secs>0); tEl.classList.toggle('over', secs<=0);
+  if(curBlk){ blkSecs++; updateBTimer(); } }
 function toggleTimer(){ if(running){clearInterval(tHandle);running=false;} else {tHandle=setInterval(tick,1000);running=true;} }
 tEl.onclick=toggleTimer;
 
@@ -277,14 +313,19 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='End'){i=B.length-1;render();}
   else if(e.key.toLowerCase()==='f'){ if(!document.fullscreenElement)document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
   else if(e.key.toLowerCase()==='t'){toggleTimer();}
-  else if(e.key.toLowerCase()==='r'){clearInterval(tHandle);running=false;secs=20*60;tEl.textContent=fmt(secs);tEl.classList.remove('warn','over');}
+  else if(e.key.toLowerCase()==='r'){clearInterval(tHandle);running=false;secs=20*60;blkSecs=0;tEl.textContent=fmt(secs);tEl.classList.remove('warn','over');updateBTimer();}
   else if(e.key.toLowerCase()==='m'){toggleToc();}
   else if(e.key==='Escape'){toc.classList.remove('open');}
 });
 const toc=document.getElementById('toc'), grid=document.getElementById('tocGrid');
-B.forEach((b,idx)=>{ if(b.kind==='title'){ const d=document.createElement('div'); d.className='item';
-  d.innerHTML=`<span class="n">${b.num}</span><span><b>${b.sec}</b> — ${b.kicker}</span>`;
-  d.onclick=()=>{ i=idx; render(); toggleToc(); }; grid.appendChild(d);} });
+B.forEach((b,idx)=>{
+  if(b.kind==='block'){ const d=document.createElement('div'); d.className='item';
+    d.style.borderColor='#2f4a42'; d.style.background='rgba(34,195,154,.08)';
+    d.innerHTML=`<span class="n">▦</span><span><b>BLOQUE ${b.blk} · ${b.t}</b><br><small style="color:#8b98a8">${b.sub} · ⏱ ${b.min}</small></span>`;
+    d.onclick=()=>{ i=idx; render(); toggleToc(); }; grid.appendChild(d); }
+  else if(b.kind==='title'){ const d=document.createElement('div'); d.className='item'; d.style.marginLeft='22px';
+    d.innerHTML=`<span class="n">${b.num}</span><span><b>${b.sec}</b> — ${b.kicker}</span>`;
+    d.onclick=()=>{ i=idx; render(); toggleToc(); }; grid.appendChild(d);} });
 function toggleToc(){ toc.classList.toggle('open'); }
 toc.addEventListener('click',e=>{ if(e.target===toc) toc.classList.remove('open'); });
 render();
