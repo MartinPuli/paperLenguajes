@@ -108,7 +108,6 @@ const B=[
 
  {kind:'title', sec:'Choque 1', num:'1', kicker:'La velocidad del avance'},
  {kind:'r', sec:'Choque 1', t:"El dato que te va a doler. Hace dos años la IA resolvía <b>1 de cada 7</b> problemas reales. ¿Hoy? <b>Más de 9 de cada 10.</b> Eso es un cohete 🚀. Y arriba no hay lugar para vos."},
- {kind:'meme', sec:'Choque 1', top:'La curva de la IA', emoji:'📈', bottom:'Stonks'},
  {kind:'g', sec:'Choque 1', dir:'tranquilo', t:"Te concedo el cohete. Pero ese examen… ¿quién lo escribió? Mide resolver problemas <b>ya planteados</b>. Tu IA se sabe todas las respuestas del final… pero no se entera de que el cliente, en realidad, <b>quería otra cosa</b>. Lo difícil es entender qué pidió el cliente. Alguien tiene que <b>hacer las preguntas</b>."},
  {kind:'r', sec:'Choque 1', dir:'no cede, presiona', t:"Detalle. Al cliente también lo va a entrevistar la IA. Seguís sin ver la curva: <b>no para</b>."},
  {kind:'aud', sec:'Choque 1', t:"Ojo: por ahora va ganando Martín. Aguanten."},
@@ -124,7 +123,7 @@ const B=[
  {kind:'r', sec:'Choque 3', t:"Con IA, una tarea <b>56 % más rápido</b>. Sobran la mitad. Es una calculadora."},
  {kind:'g', sec:'Choque 3', t:"Otro estudio: expertos, en proyectos reales, con IA <b>19 % más LENTOS</b>. No miente ninguno: miden cosas distintas. El tuyo, una tarea de juguete."},
  {kind:'r', sec:'Choque 3', dir:'aguanta', t:"Un estudio. Contra la curva entera."},
- {kind:'g', sec:'Choque 3', dir:'dejá el remate respirar', t:"Y lo mejor: <b>estaban convencidos de que iban más rápido</b>. Creían +20 %, fueron −19 %. Es el <b>«voy 5 minutos»</b> del programador… pero con respaldo científico."},
+ {kind:'g', sec:'Choque 3', dir:'dejá el remate respirar', t:"Y lo mejor: <b>estaban convencidos de que iban más rápido</b>… y eran un <b>19 % más lentos</b>. Es el <b>Dunning-Kruger con commit</b>."},
  {kind:'meme', sec:'Choque 3', top:'Devs con IA: «voy 5 minutos»', emoji:'⏳', bottom:'3 horas después: sigue debuggeando'},
  {kind:'aud', sec:'Choque 3', t:"Creían que volaban. Iban para atrás."},
 
@@ -134,6 +133,8 @@ const B=[
  {kind:'r', sec:'Choque 4', dir:'confiado, se encoge de hombros', t:"Bah… eso se arregla con mejores modelos. Cuestión de tiempo."},
  {kind:'g', sec:'Choque 4', dir:'media sonrisa', t:"…Ahí. Ahí quería que cayeras."},
  {kind:'meme', sec:'Choque 4', top:'Dijiste «ya lo van a mejorar»', emoji:'🃏', bottom:'Activaste mi carta trampa'},
+ {kind:'g', sec:'Choque 4', dir:'guiña al público', t:"Y eso que esto <b>todavía no es el papel de 1936</b>…"},
+ {kind:'r', sec:'Choque 4', dir:'baja la guardia un segundo', t:"…Che. ¿Y si tenés razón, y el que sobra <b>soy yo</b>?"},
 
  {kind:'title', sec:'Choque 5', num:'5', kicker:'La matemática · CLÍMAX (lento y en serio)', climax:true, badge:'🎯 el papel de 1936'},
  {kind:'g', sec:'Choque 5', climax:true, t:"¿Te acordás del papel de 1936? Llegó. Hay cosas que <b>no se arreglan nunca</b>. No porque falte tecnología: porque son <b>imposibles</b>. Probadas. Con matemática. Antes de la primera computadora."},
@@ -148,7 +149,6 @@ const B=[
 
  {kind:'title', sec:'Choque 6', num:'6', kicker:'"Ya están echando gente"'},
  {kind:'r', sec:'Choque 6', dir:'última carta, pega fuerte', t:"La teoría no paga el alquiler. El empleo de programadores jóvenes (22-25) cayó <b>casi 20 % desde 2024</b>. El desempleo de los recién recibidos de Computación es <b>peor que el de Historia del Arte</b>. ¿De dónde salen los arquitectos?"},
- {kind:'meme', sec:'Choque 6', top:'Estudié 5 años de ingeniería', emoji:'😐🎨', bottom:'Desempleo peor que Bellas Artes'},
  {kind:'g', sec:'Choque 6', dir:'lo reconoce y reencuadra', t:"Tu mejor golpe, te lo reconozco. Pero «programador» cae 6 %, y <b>«desarrollador de software» crece 15 %</b>. Y escuchá esto: pusieron los cajeros automáticos para <b>echar bancarios</b>… y hoy hay <b>más bancarios que nunca</b>. La automatización no echa: te <b>muda de oficina</b>."},
  {kind:'r', sec:'Choque 6', t:"…O sea que me das la mitad de la razón."},
  {kind:'g', sec:'Choque 6', t:"Te la doy, sin venderte color: la base se desploma, la cima se concentra. La profesión no se muere — <b>se polariza</b>. Pero polarizarse <b>no es extinguirse</b>."},
@@ -227,6 +227,7 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='End'){i=B.length-1;render();}
   else if(e.key.toLowerCase()==='f'){ if(!document.fullscreenElement)document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
   else if(e.key.toLowerCase()==='t'){toggleTimer();}
+  else if(e.key.toLowerCase()==='r'){clearInterval(tHandle);running=false;secs=12*60;tEl.textContent=fmt(secs);tEl.classList.remove('warn','over');}
   else if(e.key.toLowerCase()==='m'){toggleToc();}
   else if(e.key==='Escape'){toc.classList.remove('open');}
 });
