@@ -16,7 +16,6 @@
     color:var(--ink); font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
     display:flex; flex-direction:column; height:100vh; overflow:hidden;
   }
-  /* top bar */
   header{display:flex; align-items:center; gap:16px; padding:14px 22px; border-bottom:1px solid var(--line); background:rgba(0,0,0,.25)}
   header .ttl{font-weight:700; letter-spacing:.5px; font-size:14px; color:var(--muted)}
   header .ttl b{color:var(--ink)}
@@ -24,41 +23,40 @@
   .chip{display:flex; align-items:center; gap:7px; padding:5px 11px; border-radius:999px; border:1px solid var(--line); background:var(--bg2)}
   .dot{width:9px;height:9px;border-radius:50%}
   .dot.r{background:var(--red)} .dot.g{background:var(--green)}
-  /* progress */
   #bar{height:3px; background:var(--line)}
   #fill{height:100%; width:0; background:linear-gradient(90deg,var(--red),var(--green)); transition:width .25s ease}
-  /* stage */
   main{flex:1; display:flex; align-items:center; justify-content:center; padding:32px; position:relative; cursor:pointer; transition:box-shadow .35s ease}
   main.side-r{box-shadow:inset 280px 0 220px -210px rgba(231,76,60,.55)}
   main.side-g{box-shadow:inset -280px 0 220px -210px rgba(34,195,154,.55)}
   .sec{position:absolute; top:18px; left:0; right:0; text-align:center; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--muted)}
-  .card{max-width:1000px; width:100%; text-align:center; animation:in .35s ease}
+  .card{max-width:1040px; width:100%; text-align:center; animation:in .35s ease}
   @keyframes in{from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:none}}
+  @keyframes pop{0%{opacity:0;transform:scale(.85)}60%{transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
   .who{display:inline-flex; align-items:center; gap:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; font-size:15px; padding:7px 16px; border-radius:999px; margin-bottom:24px}
   .who.r{color:#ffd9d2; background:rgba(231,76,60,.14); border:1px solid rgba(231,76,60,.4)}
   .who.g{color:#c9f6e8; background:rgba(34,195,154,.14); border:1px solid rgba(34,195,154,.4)}
   .dir{font-style:italic; color:var(--muted); font-size:18px; margin-bottom:14px}
-  .line{font-size:38px; line-height:1.32; font-weight:500}
+  .line{font-size:37px; line-height:1.33; font-weight:500}
   .line.r{color:#ffeae6} .line.g{color:#e3fff6}
   .line b{color:#fff; font-weight:800}
-  /* títulos de sección */
   .title .kicker{font-size:16px; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
   .title h1{font-size:54px; line-height:1.1; font-weight:800}
   .title .num{font-size:120px; font-weight:800; color:var(--line); line-height:.9; margin-bottom:6px}
-  /* público */
   .aud .who{color:#ffe7b3; background:rgba(240,180,40,.12); border:1px solid rgba(240,180,40,.4)}
   .aud .line{font-size:30px; color:#ffeec9; font-style:italic}
-  /* clímax */
   .climax .num{color:rgba(34,195,154,.25)}
   .badge{display:inline-block; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#0d1117; background:var(--green); padding:4px 12px; border-radius:999px; font-weight:800; margin-bottom:16px}
-  /* footer */
+  /* MEME */
+  .meme{animation:pop .4s cubic-bezier(.2,.8,.3,1.2)}
+  .meme .tag{display:inline-block; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#0d1117; background:#ffd54a; padding:3px 12px; border-radius:999px; font-weight:800; margin-bottom:22px}
+  .meme .mtop,.meme .mbot{font-family:Impact,"Arial Black","Haettenschweiler",sans-serif; font-weight:900; text-transform:uppercase; color:#fff; -webkit-text-stroke:2.2px #000; paint-order:stroke fill; font-size:44px; line-height:1.08; letter-spacing:.5px; text-shadow:3px 3px 0 rgba(0,0,0,.35)}
+  .meme .memoji{font-size:140px; line-height:1.05; margin:16px 0; filter:drop-shadow(0 6px 14px rgba(0,0,0,.5))}
   footer{display:flex; align-items:center; gap:18px; padding:12px 22px; border-top:1px solid var(--line); background:rgba(0,0,0,.25); font-size:13px; color:var(--muted)}
   .nav{display:flex; gap:8px}
   button{font:inherit; color:var(--ink); background:var(--bg2); border:1px solid var(--line); border-radius:8px; padding:7px 14px; cursor:pointer}
   button:hover{border-color:#3a4757}
   .count{margin-left:auto; font-variant-numeric:tabular-nums}
   kbd{background:var(--bg2); border:1px solid var(--line); border-bottom-width:2px; border-radius:5px; padding:1px 7px; font-family:inherit; font-size:12px}
-  /* índice */
   #toc{position:fixed; inset:0; background:rgba(5,8,12,.92); display:none; padding:40px; overflow:auto; z-index:9}
   #toc.open{display:block}
   #toc h2{font-size:14px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:20px; text-align:center}
@@ -67,7 +65,7 @@
   #toc .item:hover{border-color:#3a4757}
   #toc .item .n{color:var(--muted); width:26px; font-weight:700}
   .hint{font-size:12px}
-  @media(max-width:680px){.line{font-size:26px}.title h1{font-size:34px}.title .num{font-size:78px}.contenders{display:none}}
+  @media(max-width:680px){.line{font-size:25px}.title h1{font-size:32px}.title .num{font-size:74px}.meme .mtop,.meme .mbot{font-size:30px}.meme .memoji{font-size:96px}.contenders{display:none}}
 </style>
 </head>
 <body>
@@ -98,96 +96,107 @@
 <div id="toc"><h2>Índice del debate · click para saltar</h2><div class="grid" id="tocGrid"></div></div>
 
 <script>
-/* ───────── contenido del debate ─────────
-   kind: 'title' | 'r' (Martín/EXTINCIÓN) | 'g' (Nico/CAMBIO) | 'aud' (al público)
-   los títulos abren cada sección                                            */
-const M = "Martín · EXTINCIÓN", N = "Nico · CAMBIO";
-const B = [
+/* kind: 'title' | 'r' (Martín/EXTINCIÓN) | 'g' (Nico/CAMBIO) | 'aud' | 'meme' */
+const M="Martín · EXTINCIÓN", N="Nico · CAMBIO";
+const B=[
  {kind:'title', sec:'Cold open', num:'0', kicker:'El funeral'},
- {kind:'r', sec:'Cold open', dir:'entra serio, tono de velorio, mira a la clase', t:"Señoras, señores… hoy nos toca despedir a alguien. Después de décadas de servicio, se nos va <b>el ingeniero informático</b>. Lo mató… la inteligencia artificial. Un aplauso para el finado. <i>(cierra un cajón imaginario)</i>"},
- {kind:'g', sec:'Cold open', dir:'lo frena con la mano', t:"Pará, pará, pará. Bajá el cajón. El muerto está <b>acá sentado</b>, y goza de buena salud."},
- {kind:'g', sec:'Cold open', t:"La pregunta del trabajo es esa: en diez años, ¿el ingeniero <b>desaparece</b> o <b>cambia</b>? Martín defiende el funeral. Yo defiendo la hipótesis: <b>no lo reemplaza la IA, pero su rol se transforma</b> — de escribir código a especificar, integrar, validar y supervisar. <b>De obrero a arquitecto.</b>"},
+ {kind:'r', sec:'Cold open', dir:'entra serio, tono de velorio', t:"Señoras, señores… hoy despedimos al <b>ingeniero informático</b>. Murió haciendo lo que amaba: ser reemplazado por un autocomplete. Lo mató la inteligencia artificial. Un aplauso para el finado. <i>(cierra un cajón imaginario)</i>"},
+ {kind:'g', sec:'Cold open', dir:'lo frena', t:"Pará, pará. Bajá el cajón. El muerto está <b>acá sentado</b> y goza de buena salud."},
+ {kind:'g', sec:'Cold open', t:"La pregunta es esta: en diez años, ¿el ingeniero <b>desaparece</b> o <b>cambia</b>? Martín defiende el funeral. Yo: <b>no lo reemplaza la IA, su rol se transforma</b>. <b>De obrero a arquitecto.</b>"},
  {kind:'aud', sec:'Cold open', t:"Levanten la mano: ¿quién cree que en diez años no van a existir más los programadores?"},
 
  {kind:'title', sec:'Choque 1', num:'1', kicker:'La velocidad del avance'},
- {kind:'r', sec:'Choque 1', t:"Te tiro el dato que te va a doler. Hace dos años la IA resolvía <b>1 de cada 7</b> problemas reales de programación. ¿Hoy? <b>Más de 9 de cada 10.</b> Eso es un cohete. Y arriba del cohete no hay lugar para vos."},
- {kind:'g', sec:'Choque 1', dir:'tranquilo', t:"Te concedo el cohete, no lo discuto. Pero contestame: ese examen… ¿quién lo escribió? Esa prueba mide resolver problemas <b>que ya están planteados</b>. Y lo difícil nunca fue resolver el problema: es <b>decidir qué problema vale la pena resolver</b>. Tu IA contesta genial. El tema es que <b>alguien tiene que hacer las preguntas.</b>"},
- {kind:'aud', sec:'Choque 1', t:"Él dice que la máquina contesta mejor. Yo digo que el valor está en preguntar."},
+ {kind:'r', sec:'Choque 1', t:"El dato que te va a doler. Hace dos años la IA resolvía <b>1 de cada 7</b> problemas reales. ¿Hoy? <b>Más de 9 de cada 10.</b> Eso es un cohete 🚀. Y arriba del cohete no hay lugar para vos."},
+ {kind:'meme', sec:'Choque 1', top:'La curva de la IA', emoji:'📈', bottom:'Stonks'},
+ {kind:'g', sec:'Choque 1', dir:'tranquilo', t:"Te concedo el cohete. Pero ese examen… ¿quién lo escribió? Mide resolver problemas <b>ya planteados</b>. Tu IA es el que se sabe todas las respuestas del trivia… pero no sabe qué preguntar en una primera cita. Lo difícil es <b>decidir qué problema vale la pena resolver</b>. Alguien tiene que hacer las preguntas."},
+ {kind:'aud', sec:'Choque 1', t:"Él dice que la máquina contesta mejor. Yo, que el valor está en preguntar."},
 
- {kind:'title', sec:'Choque 2', num:'2', kicker:'"Hasta los dueños de la IA lo dicen" · rápido'},
- {kind:'r', sec:'Choque 2', t:"No es opinión mía. Google y Microsoft dicen que la IA ya escribe <b>un tercio</b> de su código. Y el CEO de Anthropic predijo <b>el 90 %</b>. ¡Lo dicen los que la fabrican!"},
+ {kind:'title', sec:'Choque 2', num:'2', kicker:'"Hasta los dueños lo dicen" · rápido'},
+ {kind:'r', sec:'Choque 2', t:"No es opinión mía. Google y Microsoft dicen que la IA ya escribe <b>un tercio</b> de su código. El CEO de Anthropic predijo <b>el 90 %</b>. ¡Lo dicen los que la fabrican!"},
  {kind:'g', sec:'Choque 2', t:"Ajá. ¿Y sabés cómo <b>termina</b> esa frase del 90 %?"},
  {kind:'r', sec:'Choque 2', t:"…¿cómo termina?"},
- {kind:'g', sec:'Choque 2', t:"«…pero el programador todavía tiene que especificar las decisiones generales de diseño». El más optimista del <b>planeta</b> deja al humano decidiendo qué construir. Gracias por la cita, Martín. <b>Me la dejaste servida.</b>"},
- {kind:'aud', sec:'Choque 2', t:"Esto se llama: te cito tu propio testigo."},
+ {kind:'g', sec:'Choque 2', t:"«…pero el programador todavía tiene que especificar el diseño». El más optimista del <b>planeta</b> deja al humano decidiendo. Gracias por la cita, Martín. <b>Me la dejaste servida.</b>"},
+ {kind:'meme', sec:'Choque 2', top:'Cité a tu propio testigo', emoji:'🫵😎', bottom:'Gracias, rey'},
 
  {kind:'title', sec:'Choque 3', num:'3', kicker:'"Te hace ir más rápido" · rápido'},
- {kind:'r', sec:'Choque 3', t:"Productividad pura: con IA, una tarea <b>56 % más rápido</b>. Si cada uno rinde el doble, sobran la mitad. Es una calculadora."},
- {kind:'g', sec:'Choque 3', t:"Hermosa calculadora. Otro estudio: programadores <b>expertos</b>, en sus <b>proyectos reales</b>, con IA fueron <b>19 % más LENTOS</b>."},
+ {kind:'r', sec:'Choque 3', t:"Con IA, una tarea <b>56 % más rápido</b>. Sobran la mitad. Es una calculadora."},
+ {kind:'g', sec:'Choque 3', t:"Otro estudio: expertos, en proyectos reales, con IA <b>19 % más LENTOS</b>."},
  {kind:'r', sec:'Choque 3', t:"Imposible."},
- {kind:'g', sec:'Choque 3', t:"Y lo mejor: estaban <b>convencidos de que habían ido más rápido</b>. Creían +20 %. Fueron −19 %. La IA es brillante para <b>hacerte sentir</b> productivo. Sentirlo y serlo no es lo mismo."},
- {kind:'aud', sec:'Choque 3', t:"Creían que volaban. Iban para atrás. Acuérdense de esa."},
+ {kind:'g', sec:'Choque 3', t:"Y estaban <b>convencidos de que iban más rápido</b>. Creían +20 %, fueron −19 %. Es el «voy 5 minutos» del programador… pero con respaldo científico."},
+ {kind:'meme', sec:'Choque 3', top:'Cómo creían que iban', emoji:'🚀  ➜  🐌', bottom:'Cómo iban en realidad'},
+ {kind:'aud', sec:'Choque 3', t:"Creían que volaban. Iban para atrás."},
 
  {kind:'title', sec:'Choque 4', num:'4', kicker:'Calidad y seguridad'},
- {kind:'g', sec:'Choque 4', dir:'ahora ataca él', t:"Te toca defender, que ataco yo. El <b>«problema del 70 %»</b>: la IA te hace rápido el 70 % de un programa; el 30 % que falta —errores escondidos, casos raros, que ande en producción— sigue necesitando a alguien que <b>sepa</b>. Y en seguridad, su código viene con agujeros <b>4 de cada 10 veces</b>. ¿Subirías a ese avión?"},
- {kind:'r', sec:'Choque 4', dir:'confiado, se encoge de hombros', t:"Bah… eso se arregla con mejores modelos. Es cuestión de tiempo."},
- {kind:'g', sec:'Choque 4', dir:'media sonrisa, pausa', t:"…Ahí. Ahí quería que cayeras."},
- {kind:'aud', sec:'Choque 4', t:"Hizo la jugada obvia —«ya lo van a mejorar»— y me sirvió el golpe ganador en bandeja."},
+ {kind:'g', sec:'Choque 4', dir:'ahora ataca él', t:"Ataco yo. El «problema del 70 %»: la IA te hace rápido el 70 %; el 30 % que falta —errores escondidos, casos raros, que ande en producción— necesita a alguien que <b>sepa</b>. Y su código viene con agujeros de seguridad <b>4 de cada 10 veces</b>. ¿Subirías a ese avión?"},
+ {kind:'meme', sec:'Choque 4', top:'El 40 % del código tiene vulnerabilidades', emoji:'🔥🐶☕🔥', bottom:'This is fine'},
+ {kind:'r', sec:'Choque 4', dir:'confiado', t:"Bah… eso se arregla con mejores modelos. Cuestión de tiempo."},
+ {kind:'g', sec:'Choque 4', dir:'media sonrisa', t:"…Ahí. Ahí quería que cayeras."},
+ {kind:'meme', sec:'Choque 4', top:'Dijiste «ya lo van a mejorar»', emoji:'🃏', bottom:'Activaste mi carta trampa'},
 
  {kind:'title', sec:'Choque 5', num:'5', kicker:'La matemática · CLÍMAX (lento y en serio)', climax:true, badge:'🎯 el golpe ganador'},
- {kind:'g', sec:'Choque 5', climax:true, t:"Porque hay cosas que <b>no se arreglan nunca</b>. No porque falte tecnología: porque son <b>imposibles</b>. Probadas. Con matemática. Antes de que existiera la primera computadora."},
- {kind:'g', sec:'Choque 5', climax:true, dir:'Uno', t:"Año 1936. Turing demuestra que <b>ningún programa puede revisar a otro y garantizar, en general, que está bien</b>. No es que no se inventó: es imposible, como un triángulo de dos lados. La máquina escribe código… pero <b>no puede garantizar que su propio código esté bien</b>. Siempre hace falta un humano que valide y <b>se haga responsable</b>."},
- {kind:'g', sec:'Choque 5', climax:true, dir:'Dos', t:"Las IA «alucinan» —inventan con total seguridad— y está <b>demostrado que es inevitable</b>, no un bug que se parcha. Una IA <b>no puede revisarse a sí misma</b>: necesita a alguien de <b>afuera</b>. Ese alguien sos vos."},
- {kind:'g', sec:'Choque 5', climax:true, dir:'Tres — y esto es esta materia', t:"El código es un idioma <b>exacto</b>, sin doble sentido. Lo que vos pedís en español es <b>ambiguo</b>, lleno de sobreentendidos. El ingeniero es el <b>traductor</b> entre lo que el humano quiso decir y lo que la máquina entiende."},
- {kind:'g', sec:'Choque 5', climax:true, dir:'lo mira', t:"Esto no es una opinión, Martín. Es un teorema de <b>casi 100 años</b>. Ninguna actualización lo va a derogar."},
- {kind:'r', sec:'Choque 5', dir:'traga, se afloja', t:"…Contra un teorema no puedo discutir. Te lo concedo."},
- {kind:'aud', sec:'Choque 5', t:"Acá se inclinó la cancha. Hasta acá era «esperá a la próxima versión». Esto ninguna versión lo arregla."},
+ {kind:'g', sec:'Choque 5', climax:true, t:"Porque hay cosas que <b>no se arreglan nunca</b>. No porque falte tecnología: porque son <b>imposibles</b>. Probadas. Con matemática. Antes de la primera computadora."},
+ {kind:'g', sec:'Choque 5', climax:true, dir:'Uno', t:"Año 1936. Turing demuestra que <b>ningún programa puede revisar a otro y garantizar que está bien</b>. La máquina escribe código… pero <b>no puede garantizar que su propio código esté bien</b>. Siempre hace falta un humano que valide y <b>se haga responsable</b>."},
+ {kind:'meme', sec:'Choque 5', top:'Turing, 1936, sin computadora ni café', emoji:'🗿', bottom:'Ya te había arruinado el negocio'},
+ {kind:'g', sec:'Choque 5', climax:true, dir:'Dos', t:"Las IA «alucinan» con total seguridad, y está <b>demostrado que es inevitable</b>. No puede revisarse a sí misma: necesita a alguien de <b>afuera</b>. Ese alguien sos vos."},
+ {kind:'meme', sec:'Choque 5', top:'Nadie:\\nAbsolutamente nadie:', emoji:'📦💀', bottom:'La IA: importá este paquete que no existe'},
+ {kind:'g', sec:'Choque 5', climax:true, dir:'Tres — y esto es esta materia', t:"El código es un idioma <b>exacto</b>; lo que pedís en español es <b>ambiguo</b>. El ingeniero es el <b>traductor</b> entre lo que el humano quiso decir y lo que la máquina entiende."},
+ {kind:'g', sec:'Choque 5', climax:true, dir:'lo mira', t:"No es opinión, Martín. Es un teorema de <b>casi 100 años</b>. Ninguna actualización lo va a derogar."},
+ {kind:'meme', sec:'Choque 5', top:'Virgin «esperá la próxima versión»', emoji:'🧍  vs  🗿', bottom:'Chad «tengo un teorema de 1936»'},
+ {kind:'r', sec:'Choque 5', dir:'traga', t:"…Contra un teorema no puedo discutir. Te lo concedo."},
+ {kind:'aud', sec:'Choque 5', t:"Acá se inclinó la cancha. Esto ninguna versión lo arregla."},
 
  {kind:'title', sec:'Choque 6', num:'6', kicker:'"Ya están echando gente"'},
- {kind:'r', sec:'Choque 6', dir:'última carta, pega fuerte', t:"La teoría te la compro. Pero <b>no paga el alquiler</b>. Ya hay menos trabajo: el empleo de programadores jóvenes (22-25) cayó <b>casi 20 % desde 2024</b>. El desempleo de los recién recibidos de Computación es <b>mayor que el de Historia del Arte</b>. Si nadie consigue el primer laburo, <b>¿de dónde salen los arquitectos?</b>"},
- {kind:'g', sec:'Choque 6', dir:'lo reconoce', t:"Ese es tu mejor golpe, te lo reconozco. Pero mirá el mismo dato: «programador» cae 6 %, pero <b>«desarrollador de software» crece 15 %</b>. Cambió <b>qué se les pide</b>. ¿Te suena? El <b>cajero automático</b>: juraban que los borraba; como abrir sucursales salió más barato, hubo <b>más</b> empleados haciendo otra cosa."},
+ {kind:'r', sec:'Choque 6', dir:'última carta, pega fuerte', t:"La teoría no paga el alquiler. El empleo de programadores jóvenes (22-25) cayó <b>casi 20 % desde 2024</b>. El desempleo de los recién recibidos de Computación es <b>peor que el de Historia del Arte</b>. ¿De dónde salen los arquitectos?"},
+ {kind:'meme', sec:'Choque 6', top:'Estudié 5 años de ingeniería', emoji:'😐🎨', bottom:'Desempleo peor que Bellas Artes'},
+ {kind:'g', sec:'Choque 6', dir:'lo reconoce', t:"Ese es tu mejor golpe, te lo reconozco. Pero mirá: «programador» cae 6 %, pero <b>«desarrollador de software» crece 15 %</b>. Cambió <b>qué se les pide</b>. ¿El cajero automático? Juraban que los borraba; como abrir sucursales salió más barato, hubo <b>más</b> empleados haciendo otra cosa."},
  {kind:'r', sec:'Choque 6', t:"…O sea que me das la mitad de la razón."},
- {kind:'g', sec:'Choque 6', t:"Te la doy, sin venderte color: la transición es <b>brutal y desigual</b>. La base se desploma, la cima se concentra. La profesión no se muere — <b>se polariza</b>. Pero polarizarse <b>no es extinguirse</b>."},
+ {kind:'g', sec:'Choque 6', t:"Te la doy, sin venderte color: la base se desploma, la cima se concentra. La profesión no se muere — <b>se polariza</b>. Pero polarizarse <b>no es extinguirse</b>."},
  {kind:'aud', sec:'Choque 6', t:"La del cajero la entiende cualquiera. Es el «ahhh, claro»."},
 
  {kind:'title', sec:'Cierre', num:'★', kicker:'Síntesis — los dos en el medio'},
- {kind:'r', sec:'Cierre', dir:'honesto, a regañadientes', t:"Te concedo lo principal. El ingeniero que <b>solo</b> teclea código… ese sí se extingue. Me equivoqué de víctima: muere la <b>tarea</b>, no la <b>profesión</b>. <i>(mira el cajón)</i> …Capaz que no necesitábamos el cajón."},
- {kind:'g', sec:'Cierre', dir:'le saca el cajón, sonríe', t:"No lo necesitábamos. Y no es ascenso gratis ni para todos: la profesión sube, pero el de abajo la pasa mal. El centro se corre de <b>escribir código</b> a <b>especificar, validar y hacerse responsable</b>. <b>De obrero a arquitecto.</b> Lo respalda la historia, lo matiza la evidencia y lo demuestra la teoría."},
+ {kind:'r', sec:'Cierre', dir:'honesto', t:"Te concedo lo principal. El ingeniero que <b>solo</b> teclea código… ese sí se extingue. Muere la <b>tarea</b>, no la <b>profesión</b>. <i>(mira el cajón)</i> …Capaz que no necesitábamos el cajón."},
+ {kind:'meme', sec:'Cierre', top:'Escribir código línea por línea ❌', emoji:'🙅‍♂️ ➜ 🙆‍♂️', bottom:'Decidir qué construir y responsabilizarse ✅'},
+ {kind:'g', sec:'Cierre', dir:'le saca el cajón', t:"No lo necesitábamos. No es ascenso gratis ni para todos: la profesión sube, pero el de abajo la pasa mal. <b>De obrero a arquitecto.</b> Lo respalda la historia, lo matiza la evidencia y lo demuestra la teoría."},
  {kind:'r', sec:'Cierre', dir:'remate, al público', t:"Como dijo Grady Booch: «tus herramientas cambian… pero tus problemas no»."},
- {kind:'g', sec:'Cierre', dir:'remate, al público', t:"Y la paradoja final: <b>cuanto más poderosa se vuelve la máquina, más vale el humano que decide qué hacer con ella.</b> Por eso el mensaje no es «esfuércense más». Es <b>esfuércense inteligentemente — y dónde</b>: corran hacia el juicio que ninguna máquina va a tener sola. La pelea no es contra la máquina: es por el <b>lugar</b> desde el cual se la maneja."},
+ {kind:'g', sec:'Cierre', dir:'remate, al público', t:"Y la paradoja final: <b>cuanto más poderosa se vuelve la máquina, más vale el humano que decide qué hacer con ella.</b> Por eso el mensaje no es «esfuércense más». Es <b>esfuércense inteligentemente — y dónde</b>. La pelea no es contra la máquina: es por el <b>lugar</b> desde el cual se la maneja."},
+ {kind:'meme', sec:'Cierre', top:'El ingeniero en 2036', emoji:'🧠👑', bottom:'No desapareció. Subió de nivel.'},
  {kind:'r', sec:'Cierre', dir:'último gag', t:"Y guarden el cajón. Por las dudas, pero guárdenlo. Gracias."},
 ];
 
 const card=document.getElementById('card'), secName=document.getElementById('secName'),
-      count=document.getElementById('count'), fill=document.getElementById('fill');
+      count=document.getElementById('count'), fill=document.getElementById('fill'),
+      stage=document.getElementById('stage');
 let i=0;
 const whoName=k=> k==='r'?M : k==='g'?N : '';
+const br=s=> (s||'').replace(/\\n/g,'<br>');
 
 function render(){
-  const b=B[i]; let h='';
+  const b=B[i]; let h='', cls='card';
   if(b.kind==='title'){
-    card.className='card title'+(b.climax?' climax':'');
-    h=`<div class="num">${b.num}</div>`+
-      (b.badge?`<div class="badge">${b.badge}</div>`:'')+
+    cls='card title'+(b.climax?' climax':'');
+    h=`<div class="num">${b.num}</div>`+(b.badge?`<div class="badge">${b.badge}</div>`:'')+
       `<div class="kicker">${b.sec}</div><h1>${b.kicker}</h1>`;
+  } else if(b.kind==='meme'){
+    cls='card meme';
+    h=`<div class="tag">😂 meme</div><div class="mtop">${br(b.top)}</div>`+
+      `<div class="memoji">${b.emoji}</div><div class="mbot">${br(b.bottom)}</div>`;
   } else {
     const aud=b.kind==='aud';
-    card.className='card'+(aud?' aud':'')+(b.climax?' climax':'');
-    const wc= b.kind==='r'?'r':b.kind==='g'?'g':'';
-    const dot= b.kind==='r'?'<span class="dot r"></span>':b.kind==='g'?'<span class="dot g"></span>':'';
-    const label= aud?'🔊 Al público':whoName(b.kind);
-    h=`<div class="who ${wc}">${dot}${label}</div>`+
-      (b.dir?`<div class="dir">(${b.dir})</div>`:'')+
+    cls='card'+(aud?' aud':'')+(b.climax?' climax':'');
+    const wc=b.kind==='r'?'r':b.kind==='g'?'g':'';
+    const dot=b.kind==='r'?'<span class="dot r"></span>':b.kind==='g'?'<span class="dot g"></span>':'';
+    const label=aud?'🔊 Al público':whoName(b.kind);
+    h=`<div class="who ${wc}">${dot}${label}</div>`+(b.dir?`<div class="dir">(${b.dir})</div>`:'')+
       `<div class="line ${wc}">${b.t}</div>`;
   }
-  card.innerHTML=h;
-  document.getElementById('stage').className = b.kind==='r'?'side-r':b.kind==='g'?'side-g':'';
+  card.className=cls; card.innerHTML=h;
+  stage.className = b.kind==='r'?'side-r':b.kind==='g'?'side-g':'';
   secName.textContent=b.kind==='title'?'':b.sec;
   count.textContent=`${i+1} / ${B.length}`;
-  fill.style.width=((i)/(B.length-1)*100)+'%';
+  fill.style.width=(i/(B.length-1)*100)+'%';
 }
 function go(d){ i=Math.max(0,Math.min(B.length-1,i+d)); render(); }
-document.getElementById('stage').addEventListener('click',()=>go(1));
+stage.addEventListener('click',()=>go(1));
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(1);}
   else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(-1);}
@@ -195,17 +204,12 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='End'){i=B.length-1;render();}
   else if(e.key.toLowerCase()==='f'){ if(!document.fullscreenElement)document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
   else if(e.key.toLowerCase()==='m'){toggleToc();}
-  else if(e.key==='Escape'){document.getElementById('toc').classList.remove('open');}
+  else if(e.key==='Escape'){toc.classList.remove('open');}
 });
-/* índice de secciones */
 const toc=document.getElementById('toc'), grid=document.getElementById('tocGrid');
-const sections=[]; B.forEach((b,idx)=>{ if(b.kind==='title') sections.push({idx,num:b.num,name:b.kicker,sec:b.sec}); });
-sections.forEach(s=>{
-  const d=document.createElement('div'); d.className='item';
-  d.innerHTML=`<span class="n">${s.num}</span><span><b>${s.sec}</b> — ${s.name}</span>`;
-  d.onclick=()=>{ i=s.idx; render(); toggleToc(); };
-  grid.appendChild(d);
-});
+B.forEach((b,idx)=>{ if(b.kind==='title'){ const d=document.createElement('div'); d.className='item';
+  d.innerHTML=`<span class="n">${b.num}</span><span><b>${b.sec}</b> — ${b.kicker}</span>`;
+  d.onclick=()=>{ i=idx; render(); toggleToc(); }; grid.appendChild(d); } });
 function toggleToc(){ toc.classList.toggle('open'); }
 toc.addEventListener('click', e=>{ if(e.target===toc) toc.classList.remove('open'); });
 render();
