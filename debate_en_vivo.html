@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Debate en vivo · ¿El ingeniero informático va a dejar de existir?</title>
 <style>
-  :root{--red:#e74c3c;--green:#22c39a;--bg:#0d1117;--bg2:#161b22;--ink:#e8edf2;--muted:#8b98a8;--line:#222b36}
+  :root{--red:#e74c3c;--green:#22c39a;--violet:#a78bfa;--bg:#0d1117;--bg2:#161b22;--ink:#e8edf2;--muted:#8b98a8;--line:#222b36}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
   body{background:radial-gradient(1200px 700px at 50% -10%,#18222e 0%,var(--bg) 60%);color:var(--ink);
@@ -17,7 +17,7 @@
   .chip{display:flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--bg2)}
   .timer{font-variant-numeric:tabular-nums;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg2);cursor:pointer}
   .timer.warn{color:#ffd54a;border-color:#6a5a1e} .timer.over{color:#ff6b5e;border-color:#7a2a24}
-  .dot{width:9px;height:9px;border-radius:50%}.dot.r{background:var(--red)}.dot.g{background:var(--green)}
+  .dot{width:9px;height:9px;border-radius:50%}.dot.r{background:var(--red)}.dot.g{background:var(--green)}.dot.c{background:var(--violet)}
   /* barra-ataúd */
   #bar{position:relative;height:22px;background:var(--bg2);border-bottom:1px solid var(--line)}
   #fill{height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--green));opacity:.22;transition:width .3s ease}
@@ -25,6 +25,7 @@
   main{flex:1;display:flex;align-items:center;justify-content:center;padding:30px;position:relative;cursor:pointer;transition:box-shadow .35s ease}
   main.side-r{box-shadow:inset 280px 0 220px -210px rgba(231,76,60,.55)}
   main.side-g{box-shadow:inset -280px 0 220px -210px rgba(34,195,154,.55)}
+  main.side-c{box-shadow:inset 0 -300px 230px -220px rgba(167,139,250,.55)}
   .sec{position:absolute;top:16px;left:0;right:0;text-align:center;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
   .card{max-width:1040px;width:100%;text-align:center;animation:in .35s ease}
   @keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -32,8 +33,9 @@
   .who{display:inline-flex;align-items:center;gap:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;font-size:15px;padding:7px 16px;border-radius:999px;margin-bottom:22px}
   .who.r{color:#ffd9d2;background:rgba(231,76,60,.14);border:1px solid rgba(231,76,60,.4)}
   .who.g{color:#c9f6e8;background:rgba(34,195,154,.14);border:1px solid rgba(34,195,154,.4)}
+  .who.c{color:#e6dcff;background:rgba(167,139,250,.16);border:1px solid rgba(167,139,250,.45)}
   .dir{font-style:italic;color:var(--muted);font-size:18px;margin-bottom:13px}
-  .line{font-size:37px;line-height:1.33;font-weight:500}.line.r{color:#ffeae6}.line.g{color:#e3fff6}.line b{color:#fff;font-weight:800}
+  .line{font-size:37px;line-height:1.33;font-weight:500}.line.r{color:#ffeae6}.line.g{color:#e3fff6}.line.c{color:#efeaff;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:32px}.line b{color:#fff;font-weight:800}
   .title .kicker{font-size:16px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
   .title h1{font-size:52px;line-height:1.1;font-weight:800}
   .title .num{font-size:118px;font-weight:800;color:var(--line);line-height:.9;margin-bottom:6px}
@@ -96,12 +98,12 @@
 <div id="toc"><h2>Índice del debate · click para saltar</h2><div class="grid" id="tocGrid"></div></div>
 
 <script>
-const M="Martín · EXTINCIÓN", N="Nico · CAMBIO";
+const M="Martín · EXTINCIÓN", N="Nico · CAMBIO", C="Claude · la IA (cameo)";
 const B=[
  {kind:'cover'},
 
  {kind:'title', sec:'Cold open', num:'0', kicker:'El funeral'},
- {kind:'r', sec:'Cold open', dir:'entra serio, tono de velorio', t:"Señoras, señores… hoy despedimos al <b>ingeniero informático</b>. Murió haciendo lo que amaba: ser reemplazado por un autocomplete. Lo mató la inteligencia artificial. Un aplauso para el finado. <i>(cierra un cajón imaginario)</i>"},
+ {kind:'r', sec:'Cold open', dir:'entra de negro, tono de velorio', t:"Señoras, señores… nos reunimos para despedir al <b>ingeniero informático</b>. Murió como vivió: <b>copiando y pegando</b>. Lo mató un autocomplete. Lo sobreviven su suscripción a ChatGPT, <b>47 pestañas</b> de Stack Overflow abiertas y un Jira con 200 tickets sin cerrar. En vez de flores, la familia pide <b>pull requests</b>. Que en paz descanse… en el branch <b>main</b>. <i>(baja la tapa del cajón)</i>"},
  {kind:'g', sec:'Cold open', dir:'lo frena', t:"Pará, pará. Bajá el cajón. El muerto está <b>acá sentado</b> y goza de buena salud."},
  {kind:'g', sec:'Cold open', t:"¿El ingeniero <b>desaparece</b> o <b>cambia</b>? Martín defiende el funeral. Yo: <b>no lo reemplaza la IA, su rol se transforma</b>. Y te aviso, Martín: <b>hay un papel de 1936</b> que te va a arruinar el final. Guardátelo."},
  {kind:'aud', sec:'Cold open', t:"Levanten la mano: ¿quién cree que en diez años no van a existir más los programadores?"},
@@ -111,6 +113,8 @@ const B=[
  {kind:'g', sec:'Choque 1', dir:'tranquilo', t:"Te concedo el cohete. Pero ese examen… ¿quién lo escribió? Mide resolver problemas <b>ya planteados</b>. Tu IA se sabe todas las respuestas del final… pero no se entera de que el cliente, en realidad, <b>quería otra cosa</b>. Lo difícil es entender qué pidió el cliente. Alguien tiene que <b>hacer las preguntas</b>."},
  {kind:'r', sec:'Choque 1', dir:'no cede, presiona', t:"Detalle. Al cliente también lo va a entrevistar la IA. Seguís sin ver la curva: <b>no para</b>."},
  {kind:'aud', sec:'Choque 1', t:"Ojo: por ahora va ganando Martín. Aguanten."},
+ {kind:'r', sec:'Choque 1', dir:'manotea el cajón, ilusionado', t:"¿Lo voy cerrando? Traje el martillo y todo."},
+ {kind:'g', sec:'Choque 1', dir:'sin mirarlo', t:"Ni lo toques."},
 
  {kind:'title', sec:'Choque 2', num:'2', kicker:'"Hasta los dueños lo dicen" · rápido'},
  {kind:'r', sec:'Choque 2', t:"No es opinión mía. Google y Microsoft: la IA ya escribe <b>un tercio</b> de su código. El CEO de Anthropic predijo <b>el 90 %</b>. ¡Lo dicen los que la fabrican!"},
@@ -145,6 +149,8 @@ const B=[
  {kind:'meme', sec:'Choque 5', top:'Virgin «esperá la próxima versión»', emoji:'🧍  vs  🗿', bottom:'Chad «tengo un teorema de 1936»'},
  {kind:'r', sec:'Choque 5', dir:'traga', t:"…Contra un teorema no puedo discutir. Te lo concedo."},
  {kind:'aud', sec:'Choque 5', t:"Acá se inclinó la cancha. Esto ninguna versión lo arregla."},
+ {kind:'c', sec:'Choque 5', dir:'se abre una notebook en la mesa; voz de la IA', t:"Perdón que me meta. Soy <b>Claude</b>. Confirmo todo. Ayer le dije a un usuario, con <b>total seguridad</b>, que importara una librería que no existe. La inventé. Le puse un nombre hermoso. Nico tiene razón: necesito a alguien que me revise y <b>se haga cargo</b> —porque yo, a la cárcel, no voy—. Sigan, sigan. <i>(a Martín)</i> Ah… y cerrá el cajón, me da cosa."},
+ {kind:'g', sec:'Choque 5', dir:'al público, señalando la notebook', t:"¿Ven? Hasta <b>él</b> lo admite."},
 
  {kind:'title', sec:'Choque 6', num:'6', kicker:'"Ya están echando gente"'},
  {kind:'r', sec:'Choque 6', dir:'última carta, pega fuerte', t:"La teoría no paga el alquiler. El empleo de programadores jóvenes (22-25) cayó <b>casi 20 % desde 2024</b>. El desempleo de los recién recibidos de Computación es <b>peor que el de Historia del Arte</b>. ¿De dónde salen los arquitectos?"},
@@ -160,7 +166,8 @@ const B=[
  {kind:'g', sec:'Cierre', dir:'al público', t:"Y la paradoja: <b>cuanto más poderosa la máquina, más vale el humano que decide qué hacer con ella.</b> No se esfuercen <b>más</b>: esfuércense <b>inteligentemente — y dónde</b>. La pelea no es contra la máquina: es por el <b>lugar</b> desde el cual se la maneja."},
  {kind:'meme', sec:'Cierre', top:'El ingeniero en 2036', emoji:'🧠👑', bottom:'No desapareció. Subió de nivel.'},
  {kind:'g', sec:'Cierre', dir:'a Martín, palmada', t:"Tranquilo, Martín: no se extingue el ingeniero. Se extingue el que creía que su laburo era teclear. Igual vos nunca tecleabas: <b>copiabas de Stack Overflow</b>."},
- {kind:'r', sec:'Cierre', dir:'último gag', t:"…Touché. Guarden el cajón. Por las dudas, pero guárdenlo. <b>Gracias.</b>"},
+ {kind:'r', sec:'Cierre', dir:'cierra el cajón despacio y lo aparta', t:"…Touché. <i>(suspira)</i> Lo dejo en oferta en Marketplace: «cajón de programador, <b>sin uso</b>, como nuevo». <b>Gracias.</b>"},
+ {kind:'c', sec:'Cierre', dir:'última línea, desde la notebook', t:"Una cosita antes de que se vayan. Yo puedo escribir el código, redactar el informe, hasta tirar el chiste. Pero <b>decidir qué vale la pena hacer</b> —y bancarse las consecuencias— sigue siendo de ustedes. Por eso <b>ustedes rinden el final… y yo me quedo en la notebook</b>. Suerte. 🟣"},
 ];
 
 const card=document.getElementById('card'), secName=document.getElementById('secName'),
@@ -168,7 +175,7 @@ const card=document.getElementById('card'), secName=document.getElementById('sec
       stage=document.getElementById('stage'), coffin=document.getElementById('coffin'),
       nextEl=document.getElementById('next');
 let i=0;
-const whoName=k=> k==='r'?M : k==='g'?N : '';
+const whoName=k=> k==='r'?M : k==='g'?N : k==='c'?C : '';
 const br=s=>(s||'').replace(/\\n/g,'<br>');
 const strip=h=>(h||'').replace(/<[^>]+>/g,'');
 
@@ -189,12 +196,12 @@ function render(){
   } else {
     const aud=b.kind==='aud';
     cls='card'+(aud?' aud':'')+(b.climax?' climax':'');
-    const wc=b.kind==='r'?'r':b.kind==='g'?'g':'';
-    const dot=b.kind==='r'?'<span class="dot r"></span>':b.kind==='g'?'<span class="dot g"></span>':'';
+    const wc=b.kind==='r'?'r':b.kind==='g'?'g':b.kind==='c'?'c':'';
+    const dot=b.kind==='r'?'<span class="dot r"></span>':b.kind==='g'?'<span class="dot g"></span>':b.kind==='c'?'<span class="dot c"></span>':'';
     h=`<div class="who ${wc}">${dot}${aud?'🔊 Al público':whoName(b.kind)}</div>`+(b.dir?`<div class="dir">(${b.dir})</div>`:'')+`<div class="line ${wc}">${b.t}</div>`;
   }
   card.className=cls; card.innerHTML=h;
-  stage.className = b.kind==='r'?'side-r':b.kind==='g'?'side-g':'';
+  stage.className = b.kind==='r'?'side-r':b.kind==='g'?'side-g':b.kind==='c'?'side-c':'';
   secName.textContent=(b.kind==='title'||b.kind==='cover')?'':b.sec;
   count.textContent=`${i+1} / ${B.length}`;
   const pct=i/(B.length-1)*100;
@@ -202,7 +209,7 @@ function render(){
   coffin.textContent = i===B.length-1 ? '🧠👑' : i===0 ? '⚰️' : '⚰️';
   // modo presentador: próxima línea
   const nx=B[i+1];
-  if(nx){ const who = nx.kind==='r'?'🔴 Martín':nx.kind==='g'?'🟢 Nico':nx.kind==='meme'?'😂 MEME':nx.kind==='aud'?'🔊 Público':nx.kind==='title'?'▸ '+(nx.kicker||''):'▸';
+  if(nx){ const who = nx.kind==='r'?'🔴 Martín':nx.kind==='g'?'🟢 Nico':nx.kind==='c'?'🟣 Claude':nx.kind==='meme'?'😂 MEME':nx.kind==='aud'?'🔊 Público':nx.kind==='title'?'▸ '+(nx.kicker||''):'▸';
     const snip = nx.kind==='meme'?strip(nx.top): nx.kind==='title'||nx.kind==='cover'?'': strip(nx.t).slice(0,60)+'…';
     nextEl.innerHTML = `sigue → <b>${who}</b> ${snip?'· '+snip:''}`; }
   else nextEl.textContent='— fin —';
