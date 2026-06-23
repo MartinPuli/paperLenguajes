@@ -104,11 +104,13 @@ Universidad del CEMA · Pulitano & Silva · Prof. Mario Moreno
 🟢 **Nico:**
 > "Porque hay cosas que **no se van a arreglar nunca**. No porque falte tecnología. Porque son **imposibles**. Probadas. Con matemática. Antes de que existiera la primera computadora.
 >
-> **Uno.** Año 1936. Alan Turing demuestra que **ningún programa puede revisar a otro y garantizar, en general, que está bien.** No es que no se inventó: es **imposible**, como un triángulo de dos lados. ¿Qué quiere decir eso? Que la máquina puede escribir código… pero **no puede garantizar que su propio código esté bien.** Siempre, siempre, va a hacer falta un humano que valide y **se haga responsable**.
+> **Uno.** Año 1936. Turing prueba el **problema de la detención**. Y su corolario, el **teorema de Rice**, remata: verificar **en general** si un programa cumple su especificación es **indecidible** —imposible, como un triángulo de dos lados—. La máquina escribe código… pero <b>no puede garantizar que esté bien</b>. Siempre va a hacer falta un humano que valide y <b>se haga responsable</b>.
 >
 > **Dos.** Las IA 'alucinan' —inventan cosas con total seguridad, te miran a los ojos y te mienten—. Y está **demostrado** que eso es **inevitable**. No es un bug que se parcha. Una IA **no puede revisarse a sí misma**: necesita a alguien de **afuera**. Ese alguien sos vos, el ingeniero.
 >
 > **Tres** —y esto es literalmente esta materia—: el código es un idioma **exacto**, sin doble sentido. Lo que vos le pedís en español es **ambiguo**, lleno de sobreentendidos. El ingeniero es el **traductor** entre lo que el humano quiso decir y lo que la máquina entiende."
+>
+> *(adelanta la pregunta filosa)* "«¿Y el humano sí garantiza?» No: tampoco. Pero el humano **pone la firma**. A una IA no la podés hacer responsable, no la podés **meter presa**, no le hacés juicio. Alguien tiene que poner la cara."
 >
 > *(pausa, lo mira)* "Esto no es una opinión, Martín. Es un teorema de hace **casi 100 años**. Ninguna actualización lo va a derogar."
 
