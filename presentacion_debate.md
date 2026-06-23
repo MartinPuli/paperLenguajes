@@ -161,6 +161,23 @@ Universidad del CEMA · Pulitano & Silva · Prof. Mario Moreno
 
 ---
 
+## ⏱️ Tiempos (objetivo ~10-11 min)
+
+Cold open 1:00 · C1 1:00 · C2 0:45 · C3 0:45 · C4 1:00 · **C5 2:00 (lento)** · C6 1:30 · Cierre 1:30.
+
+## Opción B de apertura (más sobria, por si el funeral es mucho)
+
+🟢 **Nico:** *"La pregunta del trabajo es una sola: en diez años, ¿el ingeniero informático desaparece o cambia? Martín va a sostener que desaparece; yo, que cambia. Empecemos."* — y 🔴 arranca directo con el Choque 1.
+
+## 🛡️ Si nos preguntan (Q&A relámpago para la defensa)
+
+- **"¿Y si en 5 años la IA también hace la especificación?"** → Por Rice, igual hace falta un humano que **valide y se haga responsable**; especificar es **decidir qué construir**, un acto de valores, no un cómputo. El propio Amodei lo concede.
+- **"El teorema de Rice es del caso general infinito; en la práctica acotada sí se verifica."** → Exacto, por eso el núcleo **no es toda la programación**, sino la **franja de alto riesgo + responsabilidad legal**. Ahí no se delega.
+- **"¿No es esto optimismo de gremio?"** → No: reconocemos el desplazamiento real (junior −20 %, polarización). No decimos "todos bien"; decimos **muere la tarea, no la profesión** — y la entrada se vuelve durísima.
+- **"La paradoja de Jevons se revirtió con los cajeros."** → Sí, a ~25 años, con la banca móvil. Por eso es **estimación, no certeza** (lo decimos en Limitaciones). A 10 años la demanda de software sigue hiperelástica (BLS +15 %).
+- **"¿95 % en SWE-bench no prueba que ya hace todo?"** → No: el benchmark **se saturó** y mide tareas **ya planteadas**; sus creadores dicen que ya no mide la frontera. Reality-check: el agente Devin, **3 de 20** en tareas reales.
+- **"Fuente de que la alucinación es inevitable."** → Xu et al. (2024), por **diagonalización** sobre la indecidibilidad de la detención.
+
 ## Chuleta (mapa rápido)
 
 | Choque | Tema | Dato clave | Quién pega |
