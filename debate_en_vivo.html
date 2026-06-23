@@ -28,7 +28,9 @@
   #bar{height:3px; background:var(--line)}
   #fill{height:100%; width:0; background:linear-gradient(90deg,var(--red),var(--green)); transition:width .25s ease}
   /* stage */
-  main{flex:1; display:flex; align-items:center; justify-content:center; padding:32px; position:relative; cursor:pointer}
+  main{flex:1; display:flex; align-items:center; justify-content:center; padding:32px; position:relative; cursor:pointer; transition:box-shadow .35s ease}
+  main.side-r{box-shadow:inset 280px 0 220px -210px rgba(231,76,60,.55)}
+  main.side-g{box-shadow:inset -280px 0 220px -210px rgba(34,195,154,.55)}
   .sec{position:absolute; top:18px; left:0; right:0; text-align:center; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--muted)}
   .card{max-width:1000px; width:100%; text-align:center; animation:in .35s ease}
   @keyframes in{from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:none}}
@@ -179,6 +181,7 @@ function render(){
       `<div class="line ${wc}">${b.t}</div>`;
   }
   card.innerHTML=h;
+  document.getElementById('stage').className = b.kind==='r'?'side-r':b.kind==='g'?'side-g':'';
   secName.textContent=b.kind==='title'?'':b.sec;
   count.textContent=`${i+1} / ${B.length}`;
   fill.style.width=((i)/(B.length-1)*100)+'%';
@@ -204,6 +207,7 @@ sections.forEach(s=>{
   grid.appendChild(d);
 });
 function toggleToc(){ toc.classList.toggle('open'); }
+toc.addEventListener('click', e=>{ if(e.target===toc) toc.classList.remove('open'); });
 render();
 </script>
 </body>
