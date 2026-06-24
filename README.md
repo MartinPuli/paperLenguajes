@@ -11,7 +11,7 @@ sistemas automatizados.
 
 | Archivo | Descripción |
 |---|---|
-| `paper.md` | Fuente del paper (Markdown, editable). ~2.996 palabras de cuerpo; 39 referencias APA 7. |
+| `paper.md` | Fuente del paper (Markdown, editable). ~2.985 palabras de cuerpo; 40 referencias APA 7. |
 | `Paper_Rol_del_ingeniero_informatico_en_10_anios.docx` | Versión lista para entregar (portada, cuerpo justificado, bibliografía APA con sangría francesa). |
 | `Paper_Rol_del_ingeniero_informatico_en_10_anios.pdf` | Misma versión en PDF (para leer/entregar). Generado con `build_pdf.py`. |
 | `fuentes_adicionales.md` | Dossier de investigación: ~50 fuentes verificadas (papers, informes, artículos) con cita APA + DOI/URL + hallazgo clave, organizadas por eje temático. Base ampliada para profundizar cualquier sección. |
@@ -32,7 +32,7 @@ python3 build_docx.py      # crea el .docx con figuras embebidas
 ## Notas para completar antes de entregar
 
 - Portada: **completa** — Profesor: Mario Moreno; Integrantes: Martín Ezequiel Pulitano y Nicolás Ulises Silva.
-- Extensión: cuerpo en prosa (Introducción → Conclusión) ≈ 2.996 palabras, dentro
+- Extensión: cuerpo en prosa (Introducción → Conclusión) ≈ 2.985 palabras, dentro
   del límite de 1.500–3.000. El resumen, los pies de figura y la bibliografía van aparte.
 - 6 figuras embebidas + numeración de página. Todas las citas en APA 7, verificadas
   con fuentes primarias.
