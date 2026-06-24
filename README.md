@@ -11,7 +11,7 @@ sistemas automatizados.
 
 | Archivo | Descripción |
 |---|---|
-| `paper.md` | Fuente del paper (Markdown, editable). ~2.997 palabras de cuerpo; 34 referencias APA 7. |
+| `paper.md` | Fuente del paper (Markdown, editable). ~2.980 palabras de cuerpo; 38 referencias APA 7. |
 | `Paper_Rol_del_ingeniero_informatico_en_10_anios.docx` | Versión lista para entregar (portada, cuerpo justificado, bibliografía APA con sangría francesa). |
 | `fuentes_adicionales.md` | Dossier de investigación: ~50 fuentes verificadas (papers, informes, artículos) con cita APA + DOI/URL + hallazgo clave, organizadas por eje temático. Base ampliada para profundizar cualquier sección. |
 | `investigacion/` | **Toda** la información recopilada, por tema (8 archivos + índice): teoría de la computación, transformers↔lenguajes formales, IA en ingeniería de software, calidad/seguridad, visiones de expertos, economía/empleo, historia/precedentes, epistemología/surveys. Incluye citas exactas, cifras, fuentes y advertencias de fiabilidad. |
@@ -30,7 +30,7 @@ python3 build_docx.py      # crea el .docx con figuras embebidas
 ## Notas para completar antes de entregar
 
 - Portada: cargar **Profesor/a** e **Integrantes** (quedaron como campos a completar).
-- Extensión: cuerpo en prosa (Introducción → Conclusión) ≈ 2.992 palabras, dentro
+- Extensión: cuerpo en prosa (Introducción → Conclusión) ≈ 2.980 palabras, dentro
   del límite de 1.500–3.000. El resumen, los pies de figura y la bibliografía van aparte.
 - 6 figuras embebidas + numeración de página. Todas las citas en APA 7, verificadas
   con fuentes primarias.
