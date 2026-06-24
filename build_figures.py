@@ -43,7 +43,7 @@ def barlabels(ax, bars, fmt="{:+.0f}", dy=0.0):
 def fig1():
     pts = [("mar 2024\nDevin", 13.9), ("oct 2024\nClaude 3.5", 49.0),
            ("dic 2024\no3", 71.7), ("may 2025\nSonnet 4", 72.7),
-           ("sep 2025\nSonnet 4.5", 77.2)]
+           ("sep 2025\nSonnet 4.5", 77.2), ("may 2026\nOpus 4.8", 88.6)]
     x = list(range(len(pts))); y = [p[1] for p in pts]
     fig, ax = plt.subplots(figsize=(8, 4.4))
     ax.plot(x, y, "-o", color=PRIMARY, lw=2.5, markersize=8, markerfacecolor=ACCENT,
@@ -53,7 +53,7 @@ def fig1():
         ax.annotate(f"{yi:.0f}%", (xi, yi), textcoords="offset points",
                     xytext=(0, 10), ha="center", fontsize=10, fontweight="bold", color=PRIMARY)
     ax.set_xticks(x); ax.set_xticklabels([p[0] for p in pts], fontsize=9)
-    ax.set_ylim(0, 90); ax.set_ylabel("Issues resueltos (%)")
+    ax.set_ylim(0, 100); ax.set_ylabel("Issues resueltos (%)")
     ax.set_title("Crecimiento de la capacidad de la IA para programar\n(SWE-bench, estado del arte)")
     ax.grid(axis="y", ls=":", alpha=0.5)
     finish(ax, "Fuente: SWE-bench Verified (Anthropic, OpenAI). El punto de mar. 2024 (Devin) es sobre otro subconjunto.")
