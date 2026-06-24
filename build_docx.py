@@ -56,7 +56,7 @@ centered("Trabajo Práctico Final", size=12, after=160)
 centered("Carrera de grado: Ingeniería Informática", size=12, before=40)
 centered("Materia: Lenguajes Formales y Teoría de la Computación", size=12)
 centered("Profesor/a: ______________________________", size=12)
-centered("Integrantes: ______________________________", size=12)
+centered("Integrantes: Martín Ezequiel Pulitano y Nicolás Ulises Silva", size=12)
 centered("Junio de 2026", size=12, before=120)
 doc.add_page_break()
 
