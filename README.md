@@ -29,7 +29,7 @@ python3 build_docx.py      # crea el .docx con figuras embebidas
 
 ## Notas para completar antes de entregar
 
-- Portada: cargar **Profesor/a** e **Integrantes** (quedaron como campos a completar).
+- Portada: **completa** — Profesor: Mario Moreno; Integrantes: Martín Ezequiel Pulitano y Nicolás Ulises Silva.
 - Extensión: cuerpo en prosa (Introducción → Conclusión) ≈ 2.984 palabras, dentro
   del límite de 1.500–3.000. El resumen, los pies de figura y la bibliografía van aparte.
 - 6 figuras embebidas + numeración de página. Todas las citas en APA 7, verificadas
