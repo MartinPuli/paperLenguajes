@@ -13,11 +13,13 @@ sistemas automatizados.
 |---|---|
 | `paper.md` | Fuente del paper (Markdown, editable). ~2.984 palabras de cuerpo; 39 referencias APA 7. |
 | `Paper_Rol_del_ingeniero_informatico_en_10_anios.docx` | Versión lista para entregar (portada, cuerpo justificado, bibliografía APA con sangría francesa). |
+| `Paper_Rol_del_ingeniero_informatico_en_10_anios.pdf` | Misma versión en PDF (para leer/entregar). Generado con `build_pdf.py`. |
 | `fuentes_adicionales.md` | Dossier de investigación: ~50 fuentes verificadas (papers, informes, artículos) con cita APA + DOI/URL + hallazgo clave, organizadas por eje temático. Base ampliada para profundizar cualquier sección. |
 | `investigacion/` | **Toda** la información recopilada, por tema (8 archivos + índice): teoría de la computación, transformers↔lenguajes formales, IA en ingeniería de software, calidad/seguridad, visiones de expertos, economía/empleo, historia/precedentes, epistemología/surveys. Incluye citas exactas, cifras, fuentes y advertencias de fiabilidad. |
 | `figuras/` | 6 figuras profesionales (PNG 300 dpi) generadas con datos verificados: SWE-bench, productividad lab vs. real, jerarquía de Chomsky/transformers, divergencia del empleo, empleo a 2030 (WEF) y seguridad del código. |
 | `build_figures.py` | Genera las figuras (`pip install matplotlib`). |
 | `build_docx.py` | Genera el `.docx` a partir de `paper.md` (embebe las figuras y agrega numeración de página). |
+| `build_pdf.py` | Genera el `.pdf` a partir de `paper.md` (`pip install reportlab matplotlib pillow`). |
 
 ## Regenerar todo
 
