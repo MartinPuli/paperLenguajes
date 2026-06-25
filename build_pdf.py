@@ -1,112 +1,137 @@
 #!/usr/bin/env python3
-"""Genera el PDF del paper a partir de paper.md (portada, cuerpo justificado,
-figuras embebidas, bibliografía con sangría francesa y numeración de página).
-No requiere LibreOffice. Uso: python3 build_pdf.py"""
+"""Genera un PDF académico a partir de paper.md (portada, cuerpo justificado,
+figuras, bibliografía con sangría francesa, numeración de página).
+Uso: python3 build_pdf.py"""
 import re, os
+import matplotlib
 from PIL import Image as PILImage
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
-from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER, TA_LEFT
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.lib.colors import black, Color
+from reportlab.lib.colors import HexColor
 from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph,
-                                Spacer, Image, PageBreak, NextPageTemplate)
+                                Spacer, Image, PageBreak, NextPageTemplate, KeepTogether)
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
-SRC, OUT = "paper.md", "Paper_Rol_del_ingeniero_informatico_en_10_anios.pdf"
+SRC = "paper.md"
+OUT = "Paper_Rol_del_ingeniero_informatico_en_10_anios.pdf"
 
-# --- Liberation Serif (métricamente idéntica a Times New Roman) + DejaVu para símbolos
-LIB = "/usr/share/fonts/truetype/liberation"
-pdfmetrics.registerFont(TTFont("Serif", f"{LIB}/LiberationSerif-Regular.ttf"))
-pdfmetrics.registerFont(TTFont("Serif-B", f"{LIB}/LiberationSerif-Bold.ttf"))
-pdfmetrics.registerFont(TTFont("Serif-I", f"{LIB}/LiberationSerif-Italic.ttf"))
-pdfmetrics.registerFont(TTFont("Serif-BI", f"{LIB}/LiberationSerif-BoldItalic.ttf"))
-pdfmetrics.registerFontFamily("Serif", normal="Serif", bold="Serif-B",
-                              italic="Serif-I", boldItalic="Serif-BI")
-pdfmetrics.registerFont(TTFont("Deja", "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"))
+# --- fuente serif con cobertura Unicode (DejaVu Serif, incluida con matplotlib) ---
+FDIR = os.path.join(os.path.dirname(matplotlib.__file__), "mpl-data", "fonts", "ttf")
+pdfmetrics.registerFont(TTFont("Serif", os.path.join(FDIR, "DejaVuSerif.ttf")))
+pdfmetrics.registerFont(TTFont("Serif-Bold", os.path.join(FDIR, "DejaVuSerif-Bold.ttf")))
+pdfmetrics.registerFont(TTFont("Serif-Italic", os.path.join(FDIR, "DejaVuSerif-Italic.ttf")))
+pdfmetrics.registerFont(TTFont("Serif-BoldItalic", os.path.join(FDIR, "DejaVuSerif-BoldItalic.ttf")))
+pdfmetrics.registerFontFamily("Serif", normal="Serif", bold="Serif-Bold",
+                              italic="Serif-Italic", boldItalic="Serif-BoldItalic")
 
-GRAY = Color(0.25, 0.25, 0.25)
+INLINE = re.compile(r'(\*\*.+?\*\*|\*[^*]+?\*)')
+IMG = re.compile(r'^!\[(.*)\]\(([^()]+)\)\s*$')
 
-def esc(s):
-    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+def md_inline(text):
+    def esc(s): return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    out, pos = [], 0
+    for m in INLINE.finditer(text):
+        if m.start() > pos: out.append(esc(text[pos:m.start()]))
+        seg = m.group(0)
+        if seg.startswith("**"): out.append("<b>" + esc(seg[2:-2]) + "</b>")
+        else: out.append("<i>" + esc(seg[1:-1]) + "</i>")
+        pos = m.end()
+    if pos < len(text): out.append(esc(text[pos:]))
+    return "".join(out)
 
-def inline(text):
-    t = esc(text)
-    t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
-    t = re.sub(r"\*(.+?)\*", r"<i>\1</i>", t)
-    t = t.replace("⁰", "<super>0</super>")               # TC⁰
-    t = t.replace("≠", '<font name="Deja">≠</font>')      # P ≠ NP
-    t = t.replace("−", '<font name="Deja">−</font>')      # signo menos
-    return t
-
-# --- estilos
-body = ParagraphStyle("body", fontName="Serif", fontSize=11.5, leading=18,
-                      alignment=TA_JUSTIFY, firstLineIndent=0.4*cm, spaceAfter=6)
-h1 = ParagraphStyle("h1", fontName="Serif-B", fontSize=13, leading=17,
-                    spaceBefore=14, spaceAfter=6, textColor=black)
-cap = ParagraphStyle("cap", fontName="Serif-I", fontSize=9, leading=12,
-                     alignment=TA_CENTER, textColor=GRAY, spaceAfter=12, spaceBefore=4)
-biblio = ParagraphStyle("biblio", fontName="Serif", fontSize=10.5, leading=15,
-                        alignment=TA_LEFT, leftIndent=0.5*cm, firstLineIndent=-0.5*cm,
+# --- estilos ---------------------------------------------------------------
+GRAY = HexColor("#404040")
+body = ParagraphStyle("body", fontName="Serif", fontSize=11, leading=16.5,
+                      alignment=TA_JUSTIFY, firstLineIndent=0.4 * cm, spaceAfter=6)
+h1 = ParagraphStyle("h1", fontName="Serif-Bold", fontSize=13, leading=16,
+                    spaceBefore=14, spaceAfter=6, alignment=TA_LEFT)
+h2 = ParagraphStyle("h2", fontName="Serif-Bold", fontSize=11.5, leading=15,
+                    spaceBefore=10, spaceAfter=4, alignment=TA_LEFT)
+cap = ParagraphStyle("cap", fontName="Serif-Italic", fontSize=9, leading=12,
+                     alignment=TA_CENTER, textColor=GRAY, spaceBefore=4, spaceAfter=12)
+biblio = ParagraphStyle("biblio", fontName="Serif", fontSize=10.5, leading=14,
+                        alignment=TA_LEFT, leftIndent=1.1 * cm, firstLineIndent=-1.1 * cm,
                         spaceAfter=5)
-def cs(size, bold=False):  # estilo centrado para portada
-    return ParagraphStyle(f"c{size}{bold}", fontName="Serif-B" if bold else "Serif",
-                          fontSize=size, leading=size*1.3, alignment=TA_CENTER)
+kw = ParagraphStyle("kw", parent=body, firstLineIndent=0, spaceBefore=4)
 
-# --- leer markdown
+def cen(size, bold=False, sb=0, sa=0):
+    return ParagraphStyle(f"c{size}{bold}{sb}{sa}", fontName="Serif-Bold" if bold else "Serif",
+                          fontSize=size, leading=size * 1.3, alignment=TA_CENTER,
+                          spaceBefore=sb, spaceAfter=sa)
+
+# --- leer markdown ---------------------------------------------------------
 lines = open(SRC, encoding="utf-8").read().split("\n")
 title = lines[0].lstrip("# ").strip()
-IMG = re.compile(r"^!\[(.*)\]\(([^()]+)\)\s*$")
-CONTENT_W = A4[0] - 2*2.5*cm
+rest = lines[1:]
 
 story = []
-# ---------- portada ----------
-story += [Spacer(1, 3.2*cm),
-          Paragraph("UNIVERSIDAD DEL CEMA", cs(15, True)), Spacer(1, 0.2*cm),
-          Paragraph("Buenos Aires, Argentina", cs(12)), Spacer(1, 1.6*cm),
-          Paragraph(inline(title), cs(15, True)), Spacer(1, 0.9*cm),
-          Paragraph("Trabajo Práctico Final", cs(12)), Spacer(1, 1.8*cm),
-          Paragraph("Carrera: Ingeniería Informática (3.er año)", cs(12)), Spacer(1, 0.25*cm),
-          Paragraph("Materia: Lenguajes Formales y Teoría de la Computación", cs(12)), Spacer(1, 0.25*cm),
-          Paragraph("Profesor: Mario Moreno", cs(12)), Spacer(1, 0.25*cm),
-          Paragraph("Integrantes: Martín Ezequiel Pulitano y Nicolás Silva", cs(12)), Spacer(1, 1.6*cm),
-          Paragraph("Junio de 2026", cs(12)),
-          NextPageTemplate("body"), PageBreak()]
+# Portada
+story += [
+    Spacer(1, 1.4 * cm),
+    Paragraph("UNIVERSIDAD DEL CEMA", cen(15, True)),
+    Paragraph("Buenos Aires, Argentina", cen(11, sa=70)),
+    Paragraph(title, cen(16, True, sb=40, sa=40)),
+    Paragraph("Trabajo Práctico Final", cen(12, sa=90)),
+    Paragraph("Carrera de grado: Ingeniería Informática", cen(11, sb=20)),
+    Paragraph("Materia: Lenguajes Formales y Teoría de la Computación", cen(11)),
+    Paragraph("Profesor: Mario Moreno", cen(11)),
+    Paragraph("Integrantes: Martín Ezequiel Pulitano y Nicolás Ulises Silva", cen(11)),
+    Paragraph("Junio de 2026", cen(11, sb=70)),
+    NextPageTemplate("body"),
+    PageBreak(),
+]
 
-# ---------- cuerpo ----------
+FRAME_W = A4[0] - 2 * 2.4 * cm
 in_biblio = False
-for raw in lines[1:]:
-    s = raw.strip()
-    if not s:
+for raw in rest:
+    line = raw.strip()
+    if not line:
         continue
-    if s.startswith("## "):
-        txt = s[3:].strip()
-        in_biblio = txt.lower().startswith(("bibliograf", "referencia"))
-        story.append(Paragraph(inline(txt), h1))
+    if line.startswith("# "):
         continue
-    m = IMG.match(s)
-    if m:
-        caption, path = m.group(1), m.group(2)
-        if os.path.exists(path):
-            iw, ih = PILImage.open(path).size
-            w = min(CONTENT_W, 15.5*cm)
-            story.append(Image(path, width=w, height=w*ih/iw))
-            story.append(Paragraph(inline(caption), cap))
+    if line.startswith("## "):
+        t = line[3:].strip()
+        in_biblio = t.lower().startswith(("bibliograf", "referencia"))
+        story.append(Paragraph(md_inline(t), h1))
         continue
-    story.append(Paragraph(inline(s), biblio if in_biblio else body))
+    if line.startswith("### "):
+        story.append(Paragraph(md_inline(line[4:].strip()), h2))
+        continue
+    if line.startswith("**Palabras clave"):
+        story.append(Paragraph(md_inline(line), kw))
+        continue
+    mimg = IMG.match(line)
+    if mimg:
+        caption, path = mimg.group(1), mimg.group(2)
+        iw, ih = PILImage.open(path).size
+        w = min(15 * cm, FRAME_W)
+        h = w * ih / iw
+        story.append(KeepTogether([
+            Spacer(1, 4),
+            Image(path, width=w, height=h, hAlign="CENTER"),
+            Paragraph(md_inline(caption), cap),
+        ]))
+        continue
+    story.append(Paragraph(md_inline(line), biblio if in_biblio else body))
 
-# ---------- numeración de página (salvo portada) ----------
+# --- plantillas de página (portada sin pie; resto con número) --------------
+def make_frame():
+    return Frame(2.4 * cm, 2.0 * cm, FRAME_W, A4[1] - 2.0 * cm - 2.2 * cm, id="f")
+
 def footer(canvas, doc):
     canvas.saveState()
-    canvas.setFont("Serif", 10)
-    canvas.drawCentredString(A4[0]/2, 1.3*cm, str(canvas.getPageNumber()))
+    canvas.setFont("Serif", 9)
+    canvas.drawCentredString(A4[0] / 2, 1.2 * cm, str(doc.page))
     canvas.restoreState()
 
-frame = Frame(2.5*cm, 2.2*cm, CONTENT_W, A4[1]-2.2*cm-2.2*cm, id="f")
-doc = BaseDocTemplate(OUT, pagesize=A4,
-                      pageTemplates=[PageTemplate(id="cover", frames=[frame]),
-                                     PageTemplate(id="body", frames=[frame], onPage=footer)])
-doc.title = title
+doc = BaseDocTemplate(OUT, pagesize=A4, title=title,
+                      author="Martín Ezequiel Pulitano; Nicolás Ulises Silva")
+doc.addPageTemplates([
+    PageTemplate(id="cover", frames=[make_frame()]),
+    PageTemplate(id="body", frames=[make_frame()], onPage=footer),
+])
 doc.build(story)
 print("Escrito:", OUT)

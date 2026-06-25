@@ -43,21 +43,20 @@ def barlabels(ax, bars, fmt="{:+.0f}", dy=0.0):
 def fig1():
     pts = [("mar 2024\nDevin", 13.9), ("oct 2024\nClaude 3.5", 49.0),
            ("dic 2024\no3", 71.7), ("may 2025\nSonnet 4", 72.7),
-           ("sep 2025\nSonnet 4.5", 77.2), ("may 2026\nOpus 4.8", 88.6),
-           ("jun 2026\nFable 5", 95.0)]
+           ("sep 2025\nSonnet 4.5", 77.2), ("may 2026\nOpus 4.8", 88.6)]
     x = list(range(len(pts))); y = [p[1] for p in pts]
-    fig, ax = plt.subplots(figsize=(8.6, 4.4))
+    fig, ax = plt.subplots(figsize=(8, 4.4))
     ax.plot(x, y, "-o", color=PRIMARY, lw=2.5, markersize=8, markerfacecolor=ACCENT,
             markeredgecolor=PRIMARY, zorder=3)
     ax.fill_between(x, y, color=PRIMARY, alpha=0.07)
     for xi, (lbl, yi) in zip(x, pts):
         ax.annotate(f"{yi:.0f}%", (xi, yi), textcoords="offset points",
                     xytext=(0, 10), ha="center", fontsize=10, fontweight="bold", color=PRIMARY)
-    ax.set_xticks(x); ax.set_xticklabels([p[0] for p in pts], fontsize=8.5)
+    ax.set_xticks(x); ax.set_xticklabels([p[0] for p in pts], fontsize=9)
     ax.set_ylim(0, 100); ax.set_ylabel("Issues resueltos (%)")
-    ax.set_title("Crecimiento de la capacidad de la IA para programar\n(SWE-bench Verified, estado del arte)")
+    ax.set_title("Crecimiento de la capacidad de la IA para programar\n(SWE-bench, estado del arte)")
     ax.grid(axis="y", ls=":", alpha=0.5)
-    finish(ax, "Fuente: SWE-bench Verified (Anthropic, OpenAI). Hacia 2026 el benchmark se satura (Fable 5 ≈ 95 %). El punto de mar. 2024 (Devin) es sobre otro subconjunto.")
+    finish(ax, "Fuente: SWE-bench Verified (Anthropic, OpenAI). El punto de mar. 2024 (Devin) es sobre otro subconjunto.")
     fig.tight_layout(rect=[0, 0.03, 1, 1]); fig.savefig("figuras/fig1_swebench.png"); plt.close(fig)
 
 # ---------------------------------------------------------------- Fig 2
@@ -76,7 +75,7 @@ def fig2():
     fig.tight_layout(rect=[0, 0.03, 1, 1]); fig.savefig("figuras/fig2_productividad.png"); plt.close(fig)
 
 # ---------------------------------------------------------------- Fig 3 (Chomsky)
-def fig3():
+def fig4():
     fig, ax = plt.subplots(figsize=(8, 5.4))
     ax.set_xlim(0, 10); ax.set_ylim(0, 10); ax.axis("off")
     bands = [
@@ -105,10 +104,10 @@ def fig3():
                 arrowprops=dict(arrowstyle="->", color="#145A32", lw=1.6))
     fig.text(0.01, 0.01, "Fuente: Chomsky (1956); Delétang et al. (2023); Merrill & Sabharwal (2023); Pérez et al. (2021).",
              fontsize=7.5, color=GRAY, style="italic")
-    fig.tight_layout(rect=[0, 0.03, 1, 1]); fig.savefig("figuras/fig3_chomsky.png"); plt.close(fig)
+    fig.tight_layout(rect=[0, 0.03, 1, 1]); fig.savefig("figuras/fig4_chomsky.png"); plt.close(fig)
 
 # ---------------------------------------------------------------- Fig 4
-def fig4():
+def fig5():
     labels = ["Desarrolladores\nde software\n(BLS, 2024-34)",
               "Programadores\n(BLS, 2024-34)",
               "Empleo 22-25 años,\nocupaciones expuestas\n(Stanford, 2025)"]
@@ -121,10 +120,10 @@ def fig4():
     ax.set_title("El empleo se recompone: se automatiza codificar,\nno diseñar y decidir")
     ax.grid(axis="y", ls=":", alpha=0.5)
     finish(ax, "Fuente: U.S. Bureau of Labor Statistics (2025); Brynjolfsson, Chandar & Chen (2025).")
-    fig.tight_layout(rect=[0, 0.03, 1, 1]); fig.savefig("figuras/fig4_empleo.png"); plt.close(fig)
+    fig.tight_layout(rect=[0, 0.03, 1, 1]); fig.savefig("figuras/fig5_empleo.png"); plt.close(fig)
 
 # ---------------------------------------------------------------- Fig 5
-def fig5():
+def fig6():
     labels = ["Creados", "Desplazados", "Saldo neto"]
     vals = [170, -92, 78]; colors = [GREEN, RED, PRIMARY]
     fig, ax = plt.subplots(figsize=(7, 4.5))
@@ -135,10 +134,10 @@ def fig5():
     ax.set_title("Proyección global de empleo por IA y automatización a 2030")
     ax.grid(axis="y", ls=":", alpha=0.5)
     finish(ax, "Fuente: World Economic Forum, Future of Jobs Report 2025.")
-    fig.tight_layout(rect=[0, 0.03, 1, 1]); fig.savefig("figuras/fig5_wef.png"); plt.close(fig)
+    fig.tight_layout(rect=[0, 0.03, 1, 1]); fig.savefig("figuras/fig6_wef.png"); plt.close(fig)
 
 # ---------------------------------------------------------------- Fig 6
-def fig6():
+def fig3():
     labels = ["Código de Copilot\ncon vulnerabilidad\n(Pearce, 2022)",
               "Código de IA con\nfallo de seguridad\n(Veracode, 2025)",
               "Paquetes sugeridos\ninexistentes\n(Spracklen, 2025)"]
@@ -150,7 +149,7 @@ def fig6():
     ax.set_title("La IA acelera, pero la verificación sigue siendo humana")
     ax.grid(axis="y", ls=":", alpha=0.5)
     finish(ax, "Fuente: Pearce et al. (2022); Veracode (2025); Spracklen et al. (2025).")
-    fig.tight_layout(rect=[0, 0.03, 1, 1]); fig.savefig("figuras/fig6_seguridad.png"); plt.close(fig)
+    fig.tight_layout(rect=[0, 0.03, 1, 1]); fig.savefig("figuras/fig3_seguridad.png"); plt.close(fig)
 
 for f in (fig1, fig2, fig3, fig4, fig5, fig6):
     f()

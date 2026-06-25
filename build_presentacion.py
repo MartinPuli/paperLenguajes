@@ -7,10 +7,10 @@ import base64, json, os
 FIGS = {
     "fig1": "figuras/fig1_swebench.png",
     "fig2": "figuras/fig2_productividad.png",
-    "fig3": "figuras/fig3_chomsky.png",
-    "fig4": "figuras/fig4_empleo.png",
-    "fig5": "figuras/fig5_wef.png",
-    "fig6": "figuras/fig6_seguridad.png",
+    "fig3": "figuras/fig4_chomsky.png",
+    "fig4": "figuras/fig5_empleo.png",
+    "fig5": "figuras/fig6_wef.png",
+    "fig6": "figuras/fig3_seguridad.png",
 }
 IMG = {}
 for k, p in FIGS.items():
