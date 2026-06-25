@@ -103,3 +103,47 @@
 - Casi todos los % de “código por IA” (Google, Microsoft) son **auto-reportados por empresas** → decí “según…”.
 - **No** uses cita de **Tom DeMarco** (no está en las fuentes) ni inventes una **“prima salarial de X %”** (no la tenemos medida).
 - *“O adoptás la IA o te vas de esta carrera”* es de un **dev anónimo** de un estudio de GitHub, no de Dohmke.
+
+---
+
+# 🐘 EL ELEFANTE EN LA SALA — ¿burbuja y tokens subsidiados?
+> El tema que el paper no toca. Es transversal: el bloque **A** pincha el relato de “la adopción es enorme” (encaja al cierre del **Bloque 2**); el bloque **B** es riesgo macro (encaja en el cierre del **Bloque 4**); el **C** es el balance honesto (úsalo en cualquiera para que no te lo desarmen).
+> Misma convención: **negrita** = la cifra · *(extra)* = no está en el paper · ⚠ = caveat · (fuente, año).
+
+### — A. ¿Los tokens están subsidiados? (presente económico → Bloque 2) —
+1. **Altman admite que OpenAI PIERDE plata con ChatGPT Pro de US$200/mes** porque “la gente lo usa mucho más de lo que esperábamos”; textual: *“elegí yo el precio y pensé que ganaríamos algo de plata”* (TechCrunch, 2025). ⚠ declaración en X, no estado contable; es un solo plan premium de uso intensivo.
+2. **OpenAI 2025: facturó ~US$13.000 M, quemó ~US$9.000 M; el margen bruto ajustado cayó de 40 % a 33 % y el costo de inferencia se cuadruplicó** (The Information, vía analistas, 2026). *(extra)* ⚠ cifras filtradas, no auditadas; “ajustado” excluye entrenamiento.
+3. **En el 1.er semestre de 2025 OpenAI gastó ~US$5.000 M en inferencia contra ~US$2.300 M de ingresos implícitos** → el gasto de inferencia superó a los ingresos (Ed Zitron, 2025). *(extra)* ⚠ Zitron es crítico declarado; los “ingresos implícitos” son reconstrucción suya, no dato oficial.
+4. **Anthropic puso límites semanales a Claude Code (ago-2025) tras un usuario que gastó “decenas de miles de dólares” de cómputo en un plan de US$200/mes**; dijo que afectaría a “menos del 5 %” (TechCrunch, 2025). *(extra)* ← caso directo de “desarrollo con IA”.
+5. **Demanda en California (jun-2026): el plan Max de US$200 daría mucho menos uso del publicitado —una sesión de 5 h consumía el 15 % de la cuota semanal— y Anthropic admitió estar “compute-constrained”** (The Next Web, 2026). *(extra)* ⚠ alegaciones sin probar.
+6. **Cursor (jun-2025) cambió el plan Pro de US$20/mes: power users pasaron de ~US$100/mes a US$20-30 por DÍA**; pidió disculpas y dio reembolsos (cobertura, 2025-26). *(extra)* ⚠ reportes de usuarios, no comunicado oficial.
+7. **Las subas YA están pasando:** GitHub Copilot pasa a tokens medidos (jun-2026); Replit de US$200/mes a uso de ~US$1.000/semana; Windsurf ~4× (mar-2026). *(extra)* ⚠ casos, no media del mercado.
+8. **El precio por token cayó ~150× / ~79 % por año** (GPT-4 US$36/M en 2023 → GPT-4o US$4/M en 2024)… **pero atribuido a competencia open-weight y guerra de precios, no solo a eficiencia** (DeepLearning.AI, 2024). ← gancho: **precio de lista que baja ≠ costo que baja.**
+9. **DeepSeek fija el piso: V4-Pro recortó 75 % (may-2026), quedando hasta ~30-40× por debajo de OpenAI** (The Next Web, 2026). *(extra)* ⚠ guerra de precios entre rivales subsidiados (VC/estatal) → *refuerza* la tesis del subsidio.
+10. **El costo físico real: una consulta a GPT-4o gasta ~0,3 Wh** (fracción de centavo de luz) (Epoch AI, 2025). *(extra)* ⚠ CLAVE: la luz es trivial; lo que duele es **la amortización de la GPU (decenas de miles de US$) y el data center.** “Energía barata” ≠ “inferencia barata”.
+
+### — B. ¿Y si es una burbuja? (riesgo macro → cierre del Bloque 4) —
+11. **Sequoia / David Cahn — “la pregunta de los US$600.000 M”:** el gasto en GPUs abre un agujero anual de ~US$500.000 M que los ingresos por IA deben llenar (2024). *(extra)* ⚠ es de 2024 y es estimación; úsalo como el origen conceptual del debate.
+12. **Bain (sep-2025): para 2030 la IA necesita US$2 billones de ingresos anuales nuevos; aun con ahorros, queda un déficit de ~US$800.000 M.** *(extra)* ⚠ pronóstico a 2030.
+13. **El contraste brutal: OpenAI comprometió ~US$1,4 billones en data centers facturando ~US$20.000 M → ~US$70 prometidos por cada US$1 que entra** (Altman vía TechCrunch, 2025). *(extra)* ⚠ run-rate ≠ ingreso contable; compromisos plurianuales.
+14. **OpenAI proyecta quemar ~US$115.000 M hasta 2029; rentable recién hacia 2029-2030** (The Information / Fortune, 2025). *(extra)* ⚠ proyección de management; usá la pérdida **operativa** (~US$21.000 M en 2025), no la neta inflada por un cargo contable único.
+15. **Cifras DURAS (de filings regulatorios, no proyecciones): xAI perdió US$6.400 M sobre US$3.200 M en 2025 (~US$1.000 M/mes); CoreWeave arrastra US$21.370 M de deuda** (TechCrunch/SEC, 2025-26). *(extra)* ← las más sólidas.
+16. **MIT NANDA (ago-2025): el 95 % de los pilotos de GenAI empresarial no muestra retorno medible en el P&L; solo ~5 % acelera ingresos.** *(extra)* ⚠ IMPORTANTE: no dice “fracasan / ROI cero”, dice **“sin impacto medible en ~6 meses”**; working paper no peer-reviewed (52 entrevistas), criticado metodológicamente. Citalo con la salvedad o pierde fuerza académica.
+17. **Banco de Inglaterra y FMI (oct-2025): las valuaciones son “comparables al pico de la burbuja puntocom”; “el riesgo de una corrección brusca aumentó”.** *(extra)* ⚠ es advertencia de riesgo, no pronóstico de crash.
+18. **Michael Burry (“The Big Short”): puts por >US$1.000 M contra Nvidia/Palantir y acusa a los hyperscalers de inflar ganancias ~US$176.000 M (2026-28) alargando la vida contable de los chips** (CNBC/Fortune, 2025). *(extra)* ⚠ el “notional” no es capital realmente arriesgado; Nvidia lo refutó; Burry acertó en 2008 pero también erró.
+19. **Financiamiento circular: Nvidia invierte hasta US$100.000 M en OpenAI, que le compra chips a Nvidia; OpenAI firmó ~US$300.000 M con Oracle; >US$1 billón en acuerdos cruzados** (CNBC, 2025). *(extra)* ⚠ no es ilegal ni inédito (el *vendor financing* existió en la era telecom).
+20. **Espejo histórico: la puntocom borró ~US$5 billones (Nasdaq −78 %); la telecom dejó 85-95 % de la fibra “apagada” con ~US$1 billón de deuda** (Richmond Fed; índices). *(extra)* ⚠ esa fibra terminó usándose una década después → la sobrecapacidad NO siempre es ruina.
+21. **Paralelo IA↔telecom: las GPUs se renuevan cada 3-4 años pero se amortizan a 5-6 → depreciación oculta** (IEEE, 2025). *(extra)* ⚠ a diferencia de la fibra, las GPUs generan ingresos desde el día uno.
+
+### — C. El balance honesto (para que no te lo desarmen — ambos bloques) —
+22. **NO es 2000 (1) — ingresos reales:** OpenAI ×6 en <2 años (US$2.000 M→US$13.000 M); ChatGPT 800 M usuarios/semana; Anthropic ~US$30.000 M de run-rate (2026). *(extra)* ⚠ run-rate ≠ ganancia; siguen no rentables.
+23. **NO es 2000 (2) — se financia con CAJA, no deuda:** capex/flujo de caja libre de los Mag-7 <1× hoy vs. ~4× en el pico de 2000; múltiplos ~28× vs. ~66× en 1999 (Goldman, 2025 — su título: *“no es burbuja… todavía”*). *(extra)* ⚠ hacia 2026 crece la deuda para data centers (BoE) → la ventaja se erosiona.
+24. **NO es 2000 (3) — demanda saturada:** Nvidia con US$500.000 M en pedidos y capacidad agotada hasta 2026; TSMC/SK Hynix vendidos (2025). *(extra)* ⚠ Nvidia es el beneficiario; “pedidos” incluye los acuerdos circulares.
+25. **Powell (Fed, oct-2025): a diferencia de la puntocom, “estas empresas sí tienen ganancias, modelos de negocio y beneficios”.** *(extra)* ⚠ también dijo que las valuaciones están “altas”.
+26. **La “ley” de Altman (feb-2025): “el costo de usar un nivel dado de IA cae ~10× cada 12 meses”;** respaldo independiente: Epoch mide caídas de 9× a 900×/año (mediana ~50×). *(extra)* ⚠ aplica a **igualar capacidad vieja**; el costo de la **frontera** y del razonamiento *sube* 3-18×/año (paper MIT, arXiv 2025).
+27. **El matiz que eleva todo: el margen de cómputo de OpenAI pasó de ~35 % (2024) a ~70 % (2025); Anthropic SUBIÓ su margen por token aun bajando el precio, porque Blackwell genera ~30× más tokens/seg** (SemiAnalysis, 2026). *(extra)* ⚠ son márgenes **brutos que EXCLUYEN entrenamiento y R&D** — justo el costo que la tesis del subsidio apunta.
+
+### — Cómo cerrarlo —
+28. **La frase honesta:** “el costo por **token** cae de verdad (eficiencia real), pero el precio de lista cae aún más rápido por una guerra de precios financiada con capital, y el uso migra a modelos de razonamiento más caros → **el costo por tarea sube**.” La pregunta abierta no es “¿el token es barato?”, sino **“¿el precio que paga hoy un dev por Copilot/Cursor/Claude Code refleja el costo, o lo subsidia el capital de riesgo?”**
+29. **Cómo conecta con la tesis del paper:** si hoy la IA está **subsidiada**, el −19 % de los expertos (METR) y la productividad mixta son *aún menos* favorables a costo real → **refuerza “menos ingenieros y los mejores”**: cuando el precio suba, sobrevive quien extrae valor real, no quien tipea barato. Y blinda la honestidad del cierre (“no es color de rosa”).
+30. ⚠ **Aviso de honestidad:** OpenAI/Anthropic son privadas → todo es **“proyección reportada”**, no auditado: decí “proyecta / según documentos a inversores”, nunca “perdió”. **No** le atribuyas a **David Einhorn** una cita de burbuja sin buscarla aparte (no verificada). El **“US$5,6 M” de entrenamiento de DeepSeek** está **disputado** (SemiAnalysis): no lo presentes como hecho cerrado.
