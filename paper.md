@@ -98,11 +98,11 @@ Anthropic. (2026c, 12 de junio). *Statement on the US government directive to su
 
 Autor, D. H. (2015). Why are there still so many jobs? The history and future of workplace automation. *Journal of Economic Perspectives, 29*(3), 3-30. https://doi.org/10.1257/jep.29.3.3
 
-Benioff, M. (2024, 9 de diciembre). *Marc Benioff, Salesforce founder: Why Salesforce isn't hiring software engineers* (n.º 1236) [Episodio de podcast de audio]. En *20VC with Harry Stebbings*. https://www.thetwentyminutevc.com/marc-benioff-2
+Benioff, M. (2024, 9 de diciembre). Marc Benioff, Salesforce founder: Why Salesforce isn't hiring software engineers (n.º 1236) [Episodio de podcast]. *20VC with Harry Stebbings* (H. Stebbings, anfitrión). https://www.thetwentyminutevc.com/marc-benioff-2
 
-Bessen, J. (2015). Toil and technology. *Finance & Development, 52*(1), 16-19. International Monetary Fund. https://www.imf.org/external/pubs/ft/fandd/2015/03/bessen.htm
+Bessen, J. (2015). Toil and technology. *Finance & Development, 52*(1), 16-19. https://www.imf.org/external/pubs/ft/fandd/2015/03/bessen.htm
 
-Booch, G. (2026, 4 de febrero). *The third golden age of software engineering — Thanks to AI, with Grady Booch* [Episodio de pódcast]. The Pragmatic Engineer (G. Orosz, entrevistador). https://newsletter.pragmaticengineer.com/p/the-third-golden-age-of-software
+Booch, G. (2026, 4 de febrero). The third golden age of software engineering — Thanks to AI, with Grady Booch [Episodio de podcast]. *The Pragmatic Engineer* (G. Orosz, anfitrión). https://newsletter.pragmaticengineer.com/p/the-third-golden-age-of-software
 
 Brooks, F. P. (1987). No silver bullet: Essence and accidents of software engineering. *Computer, 20*(4), 10-19. https://doi.org/10.1109/MC.1987.1663532
 
@@ -146,7 +146,7 @@ Osmani, A. (2024, 4 de diciembre). *The 70% problem: Hard truths about AI-assist
 
 Pearce, H., Ahmad, B., Tan, B., Dolan-Gavitt, B., & Karri, R. (2022). Asleep at the keyboard? Assessing the security of GitHub Copilot's code contributions. En *2022 IEEE Symposium on Security and Privacy (SP)* (pp. 754-768). IEEE. https://doi.org/10.1109/SP46214.2022.9833571
 
-Peng, S., Kalliamvakou, E., Cihon, P., & Demirer, M. (2023). *The impact of AI on developer productivity: Evidence from GitHub Copilot* (arXiv:2302.06590). arXiv. https://arxiv.org/abs/2302.06590
+Peng, S., Kalliamvakou, E., Cihon, P., & Demirer, M. (2023). *The impact of AI on developer productivity: Evidence from GitHub Copilot* [Preprint]. arXiv. https://doi.org/10.48550/arXiv.2302.06590
 
 Perry, N., Srivastava, M., Kumar, D., & Boneh, D. (2023). Do users write more insecure code with AI assistants? En *Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security (CCS '23)* (pp. 2785-2799). https://doi.org/10.1145/3576915.3623157
 
@@ -158,13 +158,13 @@ SignalFire. (2026, 22 de junio). *The SignalFire state of tech talent report —
 
 Spracklen, J., Wijewickrama, R., Sakib, A. H. M. N., Maiti, A., Viswanath, B., & Jadliwala, M. (2025). We have a package for you! A comprehensive analysis of package hallucinations by code generating LLMs. En *Proceedings of the 34th USENIX Security Symposium*. USENIX Association. https://arxiv.org/abs/2406.10279
 
-Stroustrup, B. (2026, 18 de mayo). *Creator of C++: Bell Labs, negative overhead abstraction, and mistakes* (R. Peterman, entrevistador). Developing Dev. https://www.developing.dev/p/creator-of-c-bell-labs-negative-overhead
+Stroustrup, B. (2026, 18 de mayo). Creator of C++: Bell Labs, negative overhead abstraction, and mistakes [Episodio de podcast]. *Developing Dev* (R. Peterman, anfitrión). https://www.developing.dev/p/creator-of-c-bell-labs-negative-overhead
 
 Thompson, B. (2025, 20 de marzo). *An interview with OpenAI CEO Sam Altman about building a consumer tech company*. Stratechery. https://stratechery.com/2025/an-interview-with-openai-ceo-sam-altman-about-building-a-consumer-tech-company/
 
 Turing, A. M. (1936). On computable numbers, with an application to the Entscheidungsproblem. *Proceedings of the London Mathematical Society, s2-42*(1), 230-265. https://doi.org/10.1112/plms/s2-42.1.230
 
-Veracode. (2025). *GenAI code security report*. https://www.veracode.com/resources/analyst-reports/2025-genai-code-security-report/
+Veracode. (2025). *GenAI code security report* [Informe]. https://www.veracode.com/resources/analyst-reports/2025-genai-code-security-report/
 
 Washizaki, H. (Ed.). (2024). *Guide to the Software Engineering Body of Knowledge (SWEBOK Guide), Version 4.0*. IEEE Computer Society. https://www.computer.org/education/bodies-of-knowledge/software-engineering
 
@@ -172,6 +172,6 @@ Welsh, M. (2023). The end of programming. *Communications of the ACM, 66*(1), 34
 
 World Economic Forum. (2025). *The future of jobs report 2025*. https://www.weforum.org/publications/the-future-of-jobs-report-2025/
 
-Xu, Z., Jain, S., & Kankanhalli, M. (2024). *Hallucination is inevitable: An innate limitation of large language models* (arXiv:2401.11817). arXiv. https://arxiv.org/abs/2401.11817
+Xu, Z., Jain, S., & Kankanhalli, M. (2024). *Hallucination is inevitable: An innate limitation of large language models* [Preprint]. arXiv. https://doi.org/10.48550/arXiv.2401.11817
 
 Zeff, M. (2025, 29 de abril). *Microsoft CEO says up to 30% of the company's code was written by AI*. TechCrunch. https://techcrunch.com/2025/04/29/microsoft-ceo-says-up-to-30-of-the-companys-code-was-written-by-ai/
